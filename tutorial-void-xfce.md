@@ -20,21 +20,7 @@ sudo xbps-install -y xfce4
 sudo xbps-install -y lxdm
 ```
 
-## 5. Instalar áudio com PipeWire (som completo)
-
-### PipeWire + WirePlumber + ALSA + Pulse compat
-```
-sudo xbps-install -y \
-  pipewire \
-  wireplumber \
-  alsa-pipewire \
-  libjack-pipewire \
-  alsa-utils \
-  pavucontrol
-```
-
-
-## 6. Drivers de vídeo (escolher apenas um)
+## 5. Drivers de vídeo (escolher apenas um)
 
 ### Intel
 ```
@@ -56,32 +42,32 @@ sudo xbps-install -y mesa-dri xf86-video-ati
 sudo xbps-install -y mesa-nouveau-dri
 ```
 
-## 7. Desativar o XFCE-Polkit (bugado — não usar)
+## 6. Desativar o XFCE-Polkit (bugado — não usar)
 ```
 mkdir -p ~/.config/autostart
 cp /etc/xdg/autostart/xfce-polkit.desktop ~/.config/autostart/
 sed -i 's/^Hidden=.*/Hidden=true/' ~/.config/autostart/xfce-polkit.desktop || echo 'Hidden=true' >> ~/.config/autostart/xfce-polkit.desktop
 ```
 
-## 8. Instalar PipeWire (som moderno do Void)
+## 7. Instalar PipeWire (som moderno do Void)
 ```
 sudo xbps-install -y pipewire wireplumber alsa-pipewire pulseaudio-utils pavucontrol
 ```
 
-## 9. Integrar ALSA → PipeWire
+## 8. Integrar ALSA → PipeWire
 ```
 sudo mkdir -p /etc/alsa/conf.d
 sudo ln -sf /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
 sudo ln -sf /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 ```
 
-## 10. Habilitar servidor pipewire-pulse (compat PulseAudio)
+## 9. Habilitar servidor pipewire-pulse (compat PulseAudio)
 ```
 sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -sf /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 ```
 
-## 11. Ativar autostart PipeWire na sessão do XFCE
+## 10. Ativar autostart PipeWire na sessão do XFCE
 ```
 mkdir -p ~/.config/autostart
 ln -sf /usr/share/applications/pipewire.desktop ~/.config/autostart/
@@ -89,12 +75,12 @@ ln -sf /usr/share/applications/pipewire-pulse.desktop ~/.config/autostart/
 ln -sf /usr/share/applications/wireplumber.desktop ~/.config/autostart/
 ```
 
-## 12. Plugins essenciais do XFCE (ícone de som)
+## 11. Plugins essenciais do XFCE (ícone de som)
 ```
 sudo xbps-install -y xfce4-pulseaudio-plugin xfce4-notifyd
 ```
 
-## 13. Criar .xinitrc (opcional para startx)
+## 12. Criar .xinitrc (opcional para startx)
 ```
 cat <<EOF > ~/.xinitrc
 #!/bin/sh
@@ -104,7 +90,7 @@ exec startxfce4
 EOF
 ```
 
-## 14. Ativar serviços obrigatórios (runit)
+## 13. Ativar serviços obrigatórios (runit)
 ```
 sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/elogind /var/service/
