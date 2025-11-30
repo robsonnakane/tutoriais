@@ -5,6 +5,7 @@
 sudo tee -a /etc/sudoers.d/g_wheel >/dev/null << EOF
 %wheel ALL=(ALL:ALL) NOPASSWD: ALL
 EOF
+
 #Permissões obrigatórias
 sudo chmod 440 /etc/sudoers.d/g_wheel
 ```
