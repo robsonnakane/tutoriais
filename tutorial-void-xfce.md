@@ -17,9 +17,11 @@ sudo xbps-install -y xfce4 \
    xfce4-plugins \
    arc-theme \
    xfce4-screenshooter \
+   xfce4-whiskermenu-plugin \
    firefox \
    xarchiver \
    thunar-archive-plugin \
+   gvfs \
    p7zip \  
    unzip \
    htop
