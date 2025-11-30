@@ -109,6 +109,11 @@ sudo ln -s /etc/sv/NetworkManager /var/service/
 sudo ln -s /etc/sv/lxdm /var/service/
 ```
 
+## 14. Reconfigure
+```
+sudo xbps-reconfigure -fa
+```
+
 ## Finalização
 - Se LXDM estiver ativo: boot direto em GUI.
 - Se quiser modo clássico: startx
