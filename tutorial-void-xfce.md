@@ -95,40 +95,18 @@ ln -sf /usr/share/applications/wireplumber.desktop ~/.config/autostart/
 sudo xbps-install -y xfce4-pulseaudio-plugin xfce4-notifyd
 
 PANEL_XML="$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
-mkdir -p "$(dirname "$PANEL_XML")"
-
-# Se o arquivo não existir, cria um mínimo correto
-if [ ! -f "$PANEL_XML" ]; then
-cat > "$PANEL_XML" <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<channel name="xfce4-panel" version="1.0">
-  <property name="panels">
-    <property name="panel-1">
-      <property name="plugin-ids" type="array">
-      </property>
-    </property>
-  </property>
-</channel>
-EOF
+if ! grep -q 'value="pulseaudio"' "$PANEL_XML"; then
+   LAST_ID=$(grep -o 'plugin-[0-9]\+' "$PANEL_XML" | awk -F- '{print $2}' | sort -n | tail -1)
+   [ -z "$LAST_ID" ] && LAST_ID=10
+   NEW_ID=$((LAST_ID + 1))
+   sed -i "/<property name=\"plugin-ids\"/a\        <value type=\"int\" value=\"$NEW_ID\"\/>" "$PANEL_XML"
+   sed -i "/<\/property>[[:space:]]*<\/property>/ {
+     i\      <property name=\"plugin-$NEW_ID\" type=\"string\" value=\"pulseaudio\">
+     i\        <property name=\"enable-keyboard-shortcuts\" type=\"bool\" value=\"true\"/>
+     i\      </property>
+   }" "$PANEL_XML"
 fi
 
-# Se já tiver plugin-21, não mexe
-if grep -q 'plugin-21' "$PANEL_XML"; then
-  echo "[OK] plugin-21 já existe."
-  exit 0
-fi
-
-# 1) Inserir o ID 21 DENTRO de plugin-ids
-sed -i '/<property name="plugin-ids"/a\        <value type="int" value="21"\/>' "$PANEL_XML"
-
-# 2) Inserir o bloco pulseaudio DENTRO do painel-1 (antes do </property> dele)
-sed -i '/<\/property>[[:space:]]*<\/property>[[:space:]]*<\/property>/ {
-  i\      <property name="plugin-21" type="string" value="pulseaudio">
-  i\        <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-  i\      </property>
-}' "$PANEL_XML"
-
-echo "[OK] Plugin de som (ID 21) configurado corretamente dentro do painel."
 ```
 
 ## 12. Criar .xinitrc (opcional para startx)
