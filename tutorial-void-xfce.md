@@ -1,5 +1,14 @@
 # 🐧 Void Linux + XFCE4 — Tutorial Definitivo
 
+## 0. Configurar sudo - grupo wheel - para evitar de ficar pedindo senha de root
+```
+sudo tee -a /etc/sudoers.d/g_wheel >/dev/null << EOF
+%wheel ALL=(ALL:ALL) NOPASSWD: ALL
+EOF
+#Permissões obrigatórias
+sudo chmod 440 /etc/sudoers.d/g_wheel
+```
+
 ## 1. Atualizar o sistema
 ```
 sudo xbps-install -Syu
