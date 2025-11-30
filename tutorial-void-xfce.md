@@ -19,6 +19,7 @@ sudo xbps-install -y xfce4 \
    xfce4-screenshooter \
    xfce4-whiskermenu-plugin \
    firefox \
+   firefox-i18n-pt-BR \
    xarchiver \
    thunar-archive-plugin \
    gnome-disk-utility \
@@ -97,19 +98,38 @@ sudo xbps-install -y xfce4-pulseaudio-plugin xfce4-notifyd
 ## 12. Criar .xinitrc (opcional para startx)
 ```
 cat <<EOF > ~/.xinitrc
-#!/bin/sh
+#!/usr/bin/env bash
 setxkbmap -layout br -variant abnt2 &
 xsetroot -cursor_name left_ptr &
 exec startxfce4
 EOF
 ```
 
-## 13. Reconfigure
+## 13. configurar timezone - define o fuso horário
+```
+sudo ln -sfv /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+```
+
+## 14. configure locales
+```
+sudo sed -i -e 's/^#\(en_US.UTF-8 UTF-8\)/\1/' -e 's/^#\(pt_BR.UTF-8 UTF-8\)/\1/' /etc/default/libc-locales
+```
+
+## 15. Personalizar o /etc/rc.conf. Define o fuso horário, layout do teclado e fonte padrão do console. Altere conforme necessidade.
+```
+sudo cat << EOF >> /etc/rc.conf
+TIMEZONE="America/Sao_Paulo"
+KEYMAP="br-abnt2"
+FONT=Lat2-Terminus16
+EOF
+```
+
+## 16. Reconfigure
 ```
 sudo xbps-reconfigure -fa
 ```
 
-## 14. Ativar serviços obrigatórios (runit)
+## 17. Ativar serviços obrigatórios (runit)
 ```
 sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/elogind /var/service/
