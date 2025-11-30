@@ -94,13 +94,10 @@ ln -sf /usr/share/applications/wireplumber.desktop ~/.config/autostart/
 ```
 sudo xbps-install -y xfce4-pulseaudio-plugin xfce4-notifyd
 
-#!/bin/bash
 PANEL_XML="$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
-
-# Criar diretórios caso não existam
 mkdir -p "$(dirname "$PANEL_XML")"
 
-# Criar XML mínimo se não existir
+# Se o arquivo não existir, cria um mínimo correto
 if [ ! -f "$PANEL_XML" ]; then
 cat > "$PANEL_XML" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -115,30 +112,23 @@ cat > "$PANEL_XML" <<EOF
 EOF
 fi
 
-# Detectar se já existe plugin pulseaudio
-if ! grep -q 'value="pulseaudio"' "$PANEL_XML"; then
-
-  # Encontrar maior ID atual e gerar um novo
-  NEW_ID=$(grep -o 'plugin-[0-9]\+' "$PANEL_XML" | awk -F- '{print $2}' | sort -n | tail -1)
-  NEW_ID=$((NEW_ID + 1))
-
-  echo "[INFO] Criando plugin pulseaudio com ID $NEW_ID"
-
-  # Inserir o ID na lista plugin-ids
-  sed -i "/<property name=\"plugin-ids\"/a\        <value type=\"int\" value=\"$NEW_ID\"\/>" "$PANEL_XML"
-
-  # Inserir o bloco do plugin pulseaudio
-  cat <<EOF >> "$PANEL_XML"
-  <property name="plugin-$NEW_ID" type="string" value="pulseaudio">
-    <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-  </property>
-EOF
-
-else
-  echo "[OK] Plugin de som já existe no painel."
+# Se já tiver plugin-21, não mexe
+if grep -q 'plugin-21' "$PANEL_XML"; then
+  echo "[OK] plugin-21 já existe."
+  exit 0
 fi
 
-echo "[OK] Ícone de som configurado automaticamente para o XFCE."
+# 1) Inserir o ID 21 DENTRO de plugin-ids
+sed -i '/<property name="plugin-ids"/a\        <value type="int" value="21"\/>' "$PANEL_XML"
+
+# 2) Inserir o bloco pulseaudio DENTRO do painel-1 (antes do </property> dele)
+sed -i '/<\/property>[[:space:]]*<\/property>[[:space:]]*<\/property>/ {
+  i\      <property name="plugin-21" type="string" value="pulseaudio">
+  i\        <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+  i\      </property>
+}' "$PANEL_XML"
+
+echo "[OK] Plugin de som (ID 21) configurado corretamente dentro do painel."
 ```
 
 ## 12. Criar .xinitrc (opcional para startx)
