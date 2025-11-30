@@ -95,27 +95,28 @@ ln -sf /usr/share/applications/wireplumber.desktop ~/.config/autostart/
 sudo xbps-install -y xfce4-pulseaudio-plugin xfce4-notifyd
 
 XML="$HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml"
-next=$(grep -o 'plugin-[0-9]*' "$XML" 2>/dev/null | sed 's/.*-//' | sort -n | tail -1)
-next=$((next + 1))
+if ! grep -q 'pulseaudio' "$XML"; then
+   next=$(grep -o 'plugin-[0-9]*' "$XML" 2>/dev/null | sed 's/.*-//' | sort -n | tail -1)
+   next=$((next + 1))
 
-sed -i '$d' "$XML"   # remove o </channel>
-sed -i '$d' "$XML"   # remove o último </property>
+   sed -i '$d' "$XML"   # remove o </channel>
+   sed -i '$d' "$XML"   # remove o último </property>
 
-cat << EOF >> "$XML"
-    <property name="plugin-$next" type="string" value="pulseaudio">
-      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-    </property>
-  </property>
-</channel>
-EOF
+   cat << EOF >> "$XML"
+       <property name="plugin-$next" type="string" value="pulseaudio">
+         <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+       </property>
+     </property>
+   </channel>
+   EOF
 
-sed -i '/<property name="panel-1" type="empty">/,/<\/property>/ {
-    /<property name="plugin-ids" type="array">/,/<\/property>/ {
-        /<\/property>/i\
-        <value type="int" value="'"$next"'"/>
-    }
-}' "$XML"
-
+   sed -i '/<property name="panel-1" type="empty">/,/<\/property>/ {
+       /<property name="plugin-ids" type="array">/,/<\/property>/ {
+           /<\/property>/i\
+           <value type="int" value="'"$next"'"/>
+       }
+   }' "$XML"
+fi
 ```
 
 ## 12. Criar .xinitrc (opcional para startx)
