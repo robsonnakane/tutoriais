@@ -21,6 +21,8 @@ sudo xbps-install -y xfce4 \
    firefox \
    xarchiver \
    thunar-archive-plugin \
+   gnome-disk-utility \
+   gparted \
    gvfs \
    p7zip \  
    unzip \
