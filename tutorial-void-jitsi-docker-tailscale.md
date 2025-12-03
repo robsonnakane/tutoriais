@@ -252,7 +252,7 @@ tailscale serve reset
 
 ---
 
-## 10. Quando o Eduardo liberar FUNNEL
+## 10. Quando o admin da TailNet liberar FUNNEL
 
 Com Funnel ativado na Tailnet, você poderá tornar o servidor **público**, com HTTPS global:
 
