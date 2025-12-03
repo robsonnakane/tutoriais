@@ -45,7 +45,7 @@ sudo xbps-install -y xfce4 \
 sudo xbps-install -y lxdm
 ```
 
-## 5. Drivers de vídeo (escolher apenas um)
+## 5. Drivers de vídeo
 
 ### Intel
 ```

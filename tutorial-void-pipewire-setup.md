@@ -25,37 +25,30 @@ Esses são os **únicos pacotes necessários** para PipeWire no Void.
 
 ---
 
-# 2. Configuração opcional (drop-ins)
+# 2. Configuracao
 
+## 2.1 Integrar ALSA → PipeWire
 ```
+sudo mkdir -p /etc/alsa/conf.d
+sudo ln -sf /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
+sudo ln -sf /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 mkdir -p ~/.config/pipewire/pipewire.conf.d
 mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d
 ```
 
-PulseAudio compat:
+## 2.2 Habilitar servidor pipewire-pulse (compat PulseAudio)
 ```
-ln -s /usr/share/examples/pipewire/pipewire-pulse.conf.example \
-      ~/.config/pipewire/pipewire-pulse.conf
-```
-
-Drop-ins Pulse:
-```
-cp -a /usr/share/examples/pipewire/pipewire-pulse.conf.d/* \
-      ~/.config/pipewire/pipewire-pulse.conf.d/ 2>/dev/null || true
+sudo mkdir -p /etc/pipewire/pipewire.conf.d
+sudo ln -sf /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 ```
 
-ALSA:
+## 2.3 Ativar autostart PipeWire na sessão
 ```
-ln -s /usr/share/examples/pipewire/pipewire.conf.d/10-alsa.conf.example \
-      ~/.config/pipewire/pipewire.conf.d/10-alsa.conf
+mkdir -p ~/.config/autostart
+ln -sf /usr/share/applications/pipewire.desktop ~/.config/autostart/
+ln -sf /usr/share/applications/pipewire-pulse.desktop ~/.config/autostart/
+ln -sf /usr/share/applications/wireplumber.desktop ~/.config/autostart/
 ```
-
-JACK (opcional):
-```
-ln -s /usr/share/examples/pipewire/pipewire.conf.d/20-jack.conf.example \
-      ~/.config/pipewire/pipewire.conf.d/20-jack.conf
-```
-
 ---
 
 # 3. Inicialização automática por DE/WM
