@@ -337,7 +337,13 @@ tailscale serve reset
 
 ---
 
-## 10. Quando o Admin da TailNet liberar o FUNNEL (opcional, acesso público)
+## 10. Adicionando usuarios
+
+```bash
+docker compose exec prosody prosodyctl --config /config/prosody.cfg.lua register admin meet.jitsi Jitsi1234
+```
+
+## 11. Quando o Admin da TailNet liberar o FUNNEL (opcional, acesso público)
 
 Se o **Admin da TailNet** habilitar o Funnel, você poderá expor
 o Jitsi para a INTERNET inteira, com HTTPS válido, sem depender de firewall, modem ou IP fixo.
