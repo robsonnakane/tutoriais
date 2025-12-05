@@ -73,6 +73,7 @@ cd /opt/jitsi
 git clone https://github.com/jitsi/docker-jitsi-meet.git
 cd docker-jitsi-meet
 cp env.example .env
+./gen-passwords.sh
 ```
 
 ---
