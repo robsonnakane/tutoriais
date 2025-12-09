@@ -13,9 +13,9 @@
 
 ---
 
-## A instalação padrão do Void Linux não será coberta nesse tutorial.
+## Instalar o Void Linux
 
-## Trocar o Shell padrão do Void, pós instalado
+## Trocar o Shell padrão do Void
 
 ```bash
 chsh -s /bin/bash
@@ -40,17 +40,6 @@ xbps-install -S \
  python3-matplotlib python3-pexpect python3-pyasn1 \
  tree libuuid-devel wget xfsprogs-devel zlib-devel \
  bind ldns pkg-config
-```
-
-## ⚠️ ATENÇÃO:  O Samba4 compilado inclui o código do kerberos Heimdal, embutido (KDC interno) por default, mas não inclui clientes Kerberos. Nesse caso o repositório disponibiliza pacotes binários do MIT, que podem ser instalados sem qualquer problema ou interferência no kerberos heimdal default, compilado no Controlador de Domínio. Os pacotes são: mit-krb5 mit-krb5-client mit-krb5-devel. PORÉM você NÃO DEVE em hipótese alguma, instalar por repositório o pacote binário do krb5-server, o que causaria serviço concorrente ao kerberos Heimdal, interno do Samba4!
-
-## Os serviços fornecidos pelos clientes do MIT-krb5, ficam em:
-
-```bash
-/usr/bin/kinit
-/usr/bin/klist
-/usr/bin/kvno
-/usr/bin/kdestroy
 ```
 
 ## 🖥️ Setar hostname
@@ -236,7 +225,7 @@ Registered EDUCATUX<1c> ...
 
 ## 📦 Criar o serviço RUNIT do samba-ad-dc para subir o AD no boot
 
-## ⚠️ Esta parte é muito importante. Apague restos antigos SE FOR reajuste de Server pré-existente!!
+## ⚠️ Esta parte é muito importante. Apague restos antigos se for reajuste de Server pré-existente!!
 
 ```bash
 sv stop samba-ad-dc 2>/dev/null
@@ -349,7 +338,7 @@ vim /etc/chrony.conf
 # Comentar a linha do Servidor externo
 #pool pool.ntp.org iburst (AQUI)
 
-# Apontar Servidores de tempo BR
+# Servidores de tempo BR
 server 0.br.pool.ntp.org iburst
 server 1.br.pool.ntp.org iburst
 server 2.br.pool.ntp.org iburst
@@ -377,31 +366,10 @@ sv restart chronyd
 chronyc sources -v
 ```
 
-## 🔐 Criar o arquivo do Kerberos
+## 🔐 Kerberos: vincular o arquivo krb5.conf criado automagicamente no provisionamento ao path do /etc
 
 ```bash
-vim /etc/krb5.conf
-```
-
-```bash
-[libdefaults]
-    default_realm = EDUCATUX.EDU
-    dns_lookup_realm = true
-    dns_lookup_kdc = true
-    rdns = false
-    forwardable = true
-    proxiable = true
-
-[realms]
-    EDUCATUX.EDU = {
-        kdc = 192.168.70.250
-        admin_server = 192.168.70.250
-        default_domain = educatux.edu
-    }
-
-[domain_realm]
-    .educatux.edu = EDUCATUX.EDU
-    educatux.edu = EDUCATUX.EDU
+ln -sf /opt/samba/private/krb5.conf /etc/krb5.conf
 ```
 
 ## 🧭 Destravar e rejustar o /etc/resolv.conf APÓS o provisionamento, e apontar para o próprio PDC
@@ -452,7 +420,7 @@ vim /opt/samba/etc/user.map
 LIBDIR: /opt/samba/lib
 ```
 
-## Criar links entre as bibliotecas. Prefira digitar manualmente ao invés de copiar e colar aqui.
+## Criar links entre as bibliotecas
 
 ```bash
 ln -s /opt/samba/lib/libnss_winbind.so.2 /usr/lib/
@@ -881,3 +849,5 @@ No DNS updates needed
 
 👉 Contato: zerolies@disroot.org
 👉 https://t.me/z3r0l135
+
+
