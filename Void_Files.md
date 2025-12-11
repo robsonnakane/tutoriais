@@ -262,7 +262,7 @@ server 192.168.70.250 iburst
 ## Enable chronyd in runit
 
 ```bash
-ln -s /etc/sv/chronyd/ /var/service
+ln -sf /etc/sv/chronyd/ /var/service/
 ```
 
 ## Restart service:
@@ -354,11 +354,11 @@ LIBDIR: /opt/samba/lib
 ## Create library links (prefer typing manually):
 
 ```bash
-ln -s /opt/samba/lib/libnss_winbind.so.2 /usr/lib/
+ln -sf /opt/samba/lib/libnss_winbind.so.2 /usr/lib/
 ```
 
 ```bash
-ln -s /usr/lib/libnss_winbind.so.2 /usr/lib/libnss_winbind.so
+ln -sf /usr/lib/libnss_winbind.so.2 /usr/lib/libnss_winbind.so
 ```
 
 ## Reload library cache:
@@ -576,14 +576,14 @@ chmod +x /etc/sv/nmbd/log/run
 ## Enable Services
 
 ```bash
-ln -s /etc/sv/smbd /var/service/
-ln -s /etc/sv/winbindd /var/service/
+ln -sf /etc/sv/smbd /var/service/
+ln -sf /etc/sv/winbindd /var/service/
 ```
 
 ## Optional - enable only if using NetBIOS:
 
 ```bash
-ln -s /etc/sv/nmbd /var/service/
+ln -sf /etc/sv/nmbd /var/service/
 ```
 
 ## Validate Services
