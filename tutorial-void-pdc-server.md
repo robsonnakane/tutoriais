@@ -487,6 +487,7 @@ cat /opt/samba/etc/smb.conf
         server role = active directory domain controller
         workgroup = EDUCATUX
         idmap_ldb:use rfc2307 = yes
+        # aponte aos serviços, as interfaces ativas
         interfaces = lo eth0
         bind interfaces only = yes
 
@@ -744,7 +745,7 @@ Valid starting       Expires              Service principal
 ```
 
 ```bash
-samba-tool dns query voiddc educatux.edu @ A -U Administrator
+samba-tool dns query voiddc.educatux.edu educatux.edu @ A -U Administrator
 ```
 
 ## Resultado recebido:

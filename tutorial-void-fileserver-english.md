@@ -186,6 +186,7 @@ vim /opt/samba/etc/smb.conf
    security = ads
    realm = EDUCATUX.EDU
    encrypt passwords = yes
+   # point to the services, the active interfaces
    interfaces = lo eth0
    bind interfaces only = yes
 
