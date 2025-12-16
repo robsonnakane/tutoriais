@@ -49,7 +49,6 @@ sudo xbps-install -y xfce4 \
 ```
 
 ## 4. Instalar LXDM (display manager leve)
-⚠️    **IMPORTANTE:**
 ```
 sudo xbps-install -y lxdm
 ```
@@ -77,6 +76,7 @@ sudo xbps-install -y mesa-nouveau-dri
 ```
 
 ## 6. Desativar o XFCE-Polkit (bugado — não usar)
+⚠️    **IMPORTANTE:**
 ```
 mkdir -p ~/.config/autostart
 cp /etc/xdg/autostart/xfce-polkit.desktop ~/.config/autostart/
