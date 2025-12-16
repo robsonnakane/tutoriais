@@ -17,6 +17,12 @@ sudo chmod 440 /etc/sudoers.d/g_wheel
 sudo xbps-install -Syu
 ```
 
+```
+#limpar cache de pacotes
+sudo  rm -fv /var/cache/xbps/*.xbps
+sudo  rm -fv /var/cache/xbps/*.sig*
+```
+
 ## 2. Instalar Xorg + Xinit + Xterm
 ```
 sudo xbps-install -y xorg xinit xterm
