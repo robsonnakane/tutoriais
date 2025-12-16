@@ -49,6 +49,7 @@ sudo xbps-install -y xfce4 \
 ```
 
 ## 4. Instalar LXDM (display manager leve)
+⚠️    **IMPORTANTE:**
 ```
 sudo xbps-install -y lxdm
 ```
