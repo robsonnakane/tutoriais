@@ -215,6 +215,8 @@ chmod 440 /etc/sudoers.d/g_wheel
 # Criar o usuário
 ```
 NEWUSER=troque_pelo_nome_do_seu_usuario
+```
+```
 useradd -m -G audio,video,wheel,tty -s /bin/bash ${NEWUSER}
 passwd ${NEWUSER}
 ```
