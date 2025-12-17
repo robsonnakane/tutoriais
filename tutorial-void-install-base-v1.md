@@ -109,14 +109,14 @@ dhcpcd wlan0
 >NOTA: wlan0 pode variar (wlp2s0, wlp0s3, etc.)  
 ip -br a ajuda a identificar a interface correta
 
-1. Testar a conexão:
+Testar a conexão:
 ```
 ping -c3 8.8.8.8
 ping -c3 repo-default.voidlinux.org
 ```
 
-2. Instale alguns necessários pacotes:
-```
+## Instale alguns necessários pacotes:
+```bash
 xbps-install -Sy xbps parted nano vim zstd xz bash-completion
 ```
 
