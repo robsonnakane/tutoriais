@@ -217,7 +217,7 @@ chmod 440 /etc/sudoers.d/g_wheel
 # Criar o usuário
 ** IMPORTANTE **
 ```
-NEWUSER=seu_usuario_aqui
+export NEWUSER=seu_usuario_aqui
 ```
 >Altere para seu usuario real
 
