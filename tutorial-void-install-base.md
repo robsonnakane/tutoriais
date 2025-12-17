@@ -68,9 +68,15 @@ fdisk -l | grep -E '^(Disk|Disco) '
 
 2. Altere abaixo, conforme o disco que será usado (IMPORTANTE):
 ```
-DEVICE=/dev/sda
-DEV_UFI=/dev/sda1
-DEV_RAIZ=/dev/sda2
+export DEVICE=/dev/sda
+```
+
+```
+export DEV_UFI=/dev/sda1
+```
+
+```
+export DEV_RAIZ=/dev/sda2
 ```
 
 3. Usando o parted (automatico)
