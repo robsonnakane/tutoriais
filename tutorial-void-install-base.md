@@ -93,8 +93,8 @@ parted --script ${DEVICE} -- print
 ## Formatar partições
 
 ```bash
-mkfs.ext4 ${DEV_RAIZ}
-mkfs.fat -F32 ${DEV_EFI}
+mkfs.ext4 -f ${DEV_RAIZ}
+mkfs.fat -f -F32 ${DEV_EFI}
 ```
 
 ## Montar os volumes em /mnt:
