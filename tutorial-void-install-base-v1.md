@@ -1,5 +1,56 @@
 # 🔥   Tutorial de instalação do Void Linux base
 
+# Antes de começar
+
+Este tutorial descreve uma **instalação manual do Void Linux**, utilizando particionamento direto de disco, `chroot` e configuração explícita do sistema.  
+Ele **não é um instalador automático**.
+
+## ⚠️ Leia com atenção
+
+- Este guia **pressupõe familiaridade com Linux**, terminal e conceitos básicos de sistemas (discos, partições, boot, serviços).
+- Vários comandos **apagam dados permanentemente** (`parted`, `mkfs`, `umount -R`).
+- Um erro ao definir o disco (`/dev/sdX`, `/dev/nvmeX`) pode resultar em **perda total de dados**.
+- Leia **todo o tutorial antes de executar qualquer comando**.
+
+## 🖥️ Ambiente recomendado
+
+- **VM (VirtualBox, QEMU, KVM, etc.)** para testes e aprendizado.
+- Hardware dedicado **sem dados importantes**.
+- Ambiente de laboratório ou instalação consciente.
+
+❌ **Não recomendado** para uso direto em produção sem adaptações.
+
+## 🔐 Sobre segurança
+
+Durante o processo de instalação, algumas configurações **priorizam praticidade**, não segurança:
+- Login do usuário `root` via SSH pode ser habilitado temporariamente.
+- Autenticação por senha pode estar ativa.
+- Compatibilidade legada (ex: `ssh-rsa`) pode ser permitida.
+
+👉 **Essas configurações devem ser revisadas após a instalação**, especialmente em sistemas expostos à rede.
+
+## 🧠 Importante saber
+
+- Execute os comandos **um a um**, conferindo a saída.
+- Ajuste nomes de discos, interfaces de rede e usuários conforme o seu sistema.
+- **Não copie e cole cegamente**.
+- Em caso de dúvida, **pare** e revise o passo atual.
+
+## 🛠️ Em caso de erro
+
+Se algo der errado:
+- Não reinicie às cegas.
+- Refaça a montagem das partições.
+- Entre novamente no sistema com `chroot`.
+- Verifique GRUB, EFI e `initramfs`.
+
+Errar faz parte. Entender o erro é o que separa usuário de operador.
+
+---
+
+> Este guia é voltado a usuários que preferem **controle total** sobre a instalação, seguindo a abordagem clássica Unix:  
+> **entender → configurar → validar → continuar**.
+
 ## Iniciar a Instalação
 Inicie pelo ISO do Void Linux (x86_64 glibc ou musl).
 
