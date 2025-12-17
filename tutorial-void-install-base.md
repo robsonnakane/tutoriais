@@ -210,19 +210,21 @@ cat << 'EOF' > /etc/sudoers.d/g_wheel
 EOF
 #Permissões obrigatórias
 chmod 440 /etc/sudoers.d/g_wheel
+```
 
 # Criar o usuário
+```
 NEWUSER=seunomeaqui
 useradd -m -G audio,video,wheel,tty -s /bin/bash ${NEWUSER}
 passwd ${NEWUSER}
 ```
 
-## Trocar senha de root (importante):
+# Trocar senha de root (importante):
 ```bash
 passwd root
 ```
 
-## Personalizar o /etc/xbps.d/00-repository-main.conf (opcional, mas recomendável):
+# Personalizar o /etc/xbps.d/00-repository-main.conf (opcional, mas recomendável):
 - Cria o diretório de configurações do XBPS (se ainda não existir) e adiciona uma lista de repositórios oficiais e alternativos.
 Os repositórios repo-fastly costumam ter melhor latência.
 ```
