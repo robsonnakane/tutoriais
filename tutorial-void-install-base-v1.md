@@ -109,9 +109,11 @@ parted --script "${DEVICE}" -- print
 ```
 
 ## Formatar partições
-
 ```bash
+# Formata a partição raiz (ext4)
 mkfs.ext4 -F ${DEV_RAIZ}
+
+# Formata a partição EFI (FAT32)
 mkfs.fat -F32 ${DEV_EFI}
 ```
 
