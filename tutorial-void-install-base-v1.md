@@ -38,12 +38,12 @@ ip -4 route get 1.1.1.1 | awk '{print $7}'
 
 - Acesse a VM via SSH a partir do host para continuar a instalação remotamente.  
 ```bash
-sudo ssh root@<ip-da-vm>
+sudo ssh <ip-da-vm>
 ```
 > Senha padrão: `voidlinux`
 
-7. Cole no terminal (opcional, mas recomendável) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
-```
+7. (Opcional) Configure um prompt colorido no terminal, exibindo usuário, host, caminho atual e o status do último comando:
+```bash
 export PS1='\[\e[1;32m\]\u\[\e[1;33m\]@\[\e[1;36m\]\h\[\e[1;31m\]:\w \
 $([[ $? -eq 0 ]] && echo -e "\e[1;32m✔" || echo -e "\e[1;31m✘$?") \
 \[\e[0m\]\$ '
