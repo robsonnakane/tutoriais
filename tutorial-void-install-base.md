@@ -12,17 +12,20 @@ password : voidlinux
 ```
 bash
 ```
-3. Troque o layout de teclado para ABNT2
+3. Alterar o shell padrão do usuário root para Bash
+```
+chsh -s /bin/bash root
+```
+4. Troque o layout de teclado para ABNT2
 ```bash
 loadkeys br-abnt2
 ```
-
+5. Ativar login root via ssh
 ```
 echo 'PermitRootLogin Yes' >> /etc/ssh/sshd_config
 sv restart sshd
 ```
-
-4. Cole no terminal (opcional, mas recomendável) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
+6. Cole no terminal (opcional, mas recomendável) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
 ```
 export PS1='\[\e[1;32m\]\u\[\e[1;33m\]@\[\e[1;36m\]\h\[\e[1;31m\]:\w \
 $([[ $? -eq 0 ]] && echo -e "\e[1;32m✔" || echo -e "\e[1;31m✘$?") \
