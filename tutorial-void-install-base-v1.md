@@ -158,28 +158,32 @@ Acesse o sistema instalado em `/mnt` para continuar a configuração.
 xchroot /mnt /bin/bash
 ```
 
-## Configurar GRUB
-1. Crie o path para suportar o grub
+## Configurar o GRUB
+
+1. Crie o diretório de suporte ao GRUB:
 ```bash
 mkdir -p /boot/grub
 ```
 
-2. Instalar GRUB para BIOS (Legacy)
-```
+2. Instale o GRUB para **BIOS (Legacy)**:
+```bash
 grub-install --target=i386-pc ${DEVICE}
 ```
-3. Instalar GRUB para UEFI
-```
+
+3. Instale o GRUB para **UEFI**:
+```bash
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=void
 ```
 
-4. Criar fallback UEFI (boot universal). Esse arquivo garante boot mesmo quando a NVRAM for apagada.
-```
+4. Crie o fallback UEFI (boot universal).  
+Este arquivo garante o boot mesmo se a NVRAM for apagada:
+```bash
 mkdir -p /boot/efi/EFI/BOOT
 cp -f /boot/efi/EFI/void/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 ```
-5. Gerar arquivo final do GRUB
-```
+
+5. Gere o arquivo final de configuração do GRUB:
+```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
