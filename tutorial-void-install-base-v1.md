@@ -114,30 +114,30 @@ parted --script "${DEVICE}" -- print
 mkfs.ext4 -F ${DEV_RAIZ}
 
 # Formata a partição EFI (FAT32)
-mkfs.fat -F32 ${DEV_EFI}
+mkfs.fat -F32 -I ${DEV_EFI}
 ```
 
-## Montar os volumes em /mnt:
-
+## Montar os volumes em `/mnt`
 ```bash
-# O volume raiz
-mount ${DEV_RAIZ} /mnt/
+# Monte a partição raiz
+mount ${DEV_RAIZ} /mnt
 
-# Crie os pontos de montagem no chroot
+# Crie os pontos de montagem necessários
 mkdir -p /mnt/{home,boot/efi,var/log,var/cache,dev,proc,sys,run}
 
-# monte EFI:
+# Monte a partição EFI
 mount ${DEV_EFI} /mnt/boot/efi
 ```
 
 ## Instalar o sistema base
-```
+Instala o sistema base do Void Linux no ambiente montado em `/mnt`, incluindo kernel, firmware, bootloader, rede e ferramentas essenciais.
+```bash
 xbps-install -Sy -R https://repo-default.voidlinux.org/current \
-   -r /mnt \
-   base-system e2fsprogs grub-x86_64-efi dracut linux \
-   linux-headers linux-firmware linux-firmware-network glibc-locales \
-   xtools dhcpcd openssh vim nano grc zstd xz bash-completion vpm vsv \
-   socklog-void wget net-tools tmate ncurses
+  -r /mnt \
+  base-system e2fsprogs grub-x86_64-efi dracut linux \
+  linux-headers linux-firmware linux-firmware-network glibc-locales \
+  xtools dhcpcd openssh vim nano grc zstd xz bash-completion vpm vsv \
+  socklog-void wget net-tools tmate ncurses
 ```
 
 ## Isso garante:
