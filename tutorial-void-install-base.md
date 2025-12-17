@@ -20,12 +20,20 @@ chsh -s /bin/bash root
 ```bash
 loadkeys br-abnt2
 ```
-5. Ativar login root via ssh
+5. Ativar login root via para acesso ssh
 ```
 echo 'PermitRootLogin Yes' >> /etc/ssh/sshd_config
 sv restart sshd
+ip a
 ```
-6. Cole no terminal (opcional, mas recomendável) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
+> Anote o ip da interface e use para logar no host via ssh
+
+6. (Opcional) Login via ssh na VM via host
+```
+sudo ssh root@<ip-da-vm>
+```
+
+7. Cole no terminal (opcional, mas recomendável) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
 ```
 export PS1='\[\e[1;32m\]\u\[\e[1;33m\]@\[\e[1;36m\]\h\[\e[1;31m\]:\w \
 $([[ $? -eq 0 ]] && echo -e "\e[1;32m✔" || echo -e "\e[1;31m✘$?") \
