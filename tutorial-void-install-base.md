@@ -68,12 +68,11 @@ fdisk -l | grep -E '^(Disk|Disco) '
 
 2. Altere abaixo, conforme o disco que será usado (IMPORTANTE):
 ```
-#
 export DEVICE=/dev/sda
 ```
 
 ```
-export DEV_UFI=/dev/sda1
+export DEV_EFI=/dev/sda1
 ```
 
 ```
@@ -93,7 +92,7 @@ parted --script ${DEVICE} -- print
 ## Formatar partições
 
 ```bash
-mkfs.ext4 -f ${DEV_RAIZ}
+mkfs.ext4 -F ${DEV_RAIZ}
 mkfs.fat -f -F32 ${DEV_EFI}
 ```
 
