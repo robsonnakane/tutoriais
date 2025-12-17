@@ -42,19 +42,21 @@ sudo ssh <ip-da-vm>
 ```
 > Senha padrão: `voidlinux`
 
-7. (Opcional) Configure um prompt colorido no terminal, exibindo usuário, host, caminho atual e o status do último comando:
+7. Configure um prompt colorido no terminal, exibindo usuário, host, caminho atual e o status do último comando:
 ```bash
 export PS1='\[\e[1;32m\]\u\[\e[1;33m\]@\[\e[1;36m\]\h\[\e[1;31m\]:\w \
 $([[ $? -eq 0 ]] && echo -e "\e[1;32m✔" || echo -e "\e[1;31m✘$?") \
 \[\e[0m\]\$ '
 ```
 # Conectar à Internet
-- Para Wi-Fi *(se estiver no cabo, pule esta etapa)*:
-```
-wpa_passphrase "SSID" "SENHA" > wifi.conf
+- Para **Wi-Fi** *(se estiver no cabo, pule esta etapa)*:
+```bash
+wpa_passphrase "NOME_DA_REDE_WIFI" "SENHA_DA_REDE" > wifi.conf
 wpa_supplicant -B -i wlan0 -c wifi.conf
 dhcpcd wlan0
 ```
+>NOTA: wlan0 pode variar (wlp2s0, wlp0s3, etc.)  
+ip -br a ajuda a identificar a interface correta
 
 1. Testar a conexão:
 ```
