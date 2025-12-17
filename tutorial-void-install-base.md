@@ -32,6 +32,7 @@ ip a
 ```
 sudo ssh root@<ip-da-vm>
 ```
+> password : voidlinux
 
 7. Cole no terminal (opcional, mas recomendável) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
 ```
