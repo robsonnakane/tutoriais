@@ -285,28 +285,31 @@ repository=https://void.chililinux.com/voidlinux/current
 EOF
 ```
 
-## Personalizar o /etc/rc.conf (opcional, mas recomendável):
-- Define o fuso horário, layout do teclado e fonte padrão do console. Altere conforme necessidade.
-```
-cat << 'EOF' >> /etc/rc.conf
+## Personalizar `/etc/rc.conf`  
+Define o fuso horário, o layout do teclado e a fonte padrão do console.  
+Altere conforme a necessidade.
+```bash
+cat << 'EOF' > /etc/rc.conf
 TIMEZONE=America/Sao_Paulo
 KEYMAP=br-abnt2
 FONT=Lat2-Terminus16
 EOF
 ```
 
-## Personalizar o .bashrc do usuario (opcional, mas recomendável):
-Cria um .bash_profile para o usuário e garante que o .bashrc seja carregado automaticamente no login.
-> confira se criou o usuário no passo anterior
-```
+## Personalizar o `.bashrc` do usuário
+Cria um `.bash_profile` padrão e garante que o `.bashrc` seja carregado automaticamente no login.  
+> ⚠️ Certifique-se de que o usuário foi criado no passo anterior.
+
+```bash
+# Baixar .bashrc padrão para o /etc/skel
 wget --quiet --no-check-certificate \
-   -O /etc/skel/.bashrc \
-   "https://raw.githubusercontent.com/voidlinux-br/void-installer/refs/heads/main/.bashrc"
+  -O /etc/skel/.bashrc \
+  "https://raw.githubusercontent.com/voidlinux-br/void-installer/refs/heads/main/.bashrc"
+
 chown root:root /etc/skel/.bashrc
 chmod 644 /etc/skel/.bashrc
-```
 
-```
+# Criar .bash_profile padrão
 cat << 'EOF' > /etc/skel/.bash_profile
 # ~/.bash_profile — carrega o .bashrc no Void
 
@@ -315,17 +318,21 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 EOF
-```
 
-```
-# copia para o root e usuario
+# Copiar para root e usuário
 for d in /root "/home/${NEWUSER}"; do
-   cp -f /etc/skel/.bash_profile "$d/"
-   cp -f /etc/skel/.bashrc "$d/"
+  cp -f /etc/skel/.bash_profile "$d/"
+  cp -f /etc/skel/.bashrc "$d/"
 done
 
-chown "${NEWUSER}:${NEWUSER}" "/home/${NEWUSER}/.bash_profile" "/home/${NEWUSER}/.bashrc"
-chmod 644 "/home/${NEWUSER}/.bash_profile" "/home/${NEWUSER}/.bashrc"
+# Ajustar permissões do usuário
+chown "${NEWUSER}:${NEWUSER}" \
+  "/home/${NEWUSER}/.bash_profile" \
+  "/home/${NEWUSER}/.bashrc"
+
+chmod 644 \
+  "/home/${NEWUSER}/.bash_profile" \
+  "/home/${NEWUSER}/.bashrc"
 ```
 
 ## configurar ssh (opcional, mas recomendável):
