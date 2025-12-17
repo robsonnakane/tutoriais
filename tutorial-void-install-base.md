@@ -137,22 +137,28 @@ xgenfstab -U /mnt > /mnt/etc/fstab
 xchroot /mnt /bin/bash
 ```
 ## Configurar GRUB
+1. Crie o path para suportar o grub
 ```bash
-# Crie o path para suportar o grub
 mkdir -p /boot/grub
-
-# Gerar o novo grub.cfg
-grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-## Instalação do Boot Manager GRUB em UEFI
-```bash
-# Instale o GRUB
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=void --recheck
+2. Instalar GRUB para BIOS (Legacy)
+```
+grub-install --target=i386-pc ${DEVICE}
+```
+3. Instalar GRUB para UEFI
+```
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=void
+```
 
-# Criar fallback UEFI (boot universal) - Esse arquivo garante boot mesmo quando a NVRAM for apagada.
+4. Criar fallback UEFI (boot universal). Esse arquivo garante boot mesmo quando a NVRAM for apagada.
+```
 mkdir -p /boot/efi/EFI/BOOT
-cp -vf /boot/efi/EFI/void/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+cp -f /boot/efi/EFI/void/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+```
+5. Gerar arquivo final do GRUB
+```
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ## Gerando o INITRAMFS
