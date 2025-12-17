@@ -138,10 +138,6 @@ xchroot /mnt /bin/bash
 ```
 ## Configurar GRUB
 ```bash
-# Pegar a UUID da partição sda2:
-UUID=$(blkid -s UUID -o value ${DEV_RAIZ})
-echo ${UUID}
-
 # Crie o path para suportar o grub
 mkdir -p /boot/grub
 
