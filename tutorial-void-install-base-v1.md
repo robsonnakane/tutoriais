@@ -153,10 +153,11 @@ xgenfstab -U /mnt > /mnt/etc/fstab
 ```
 
 ## Entrar no sistema (chroot)
-1. Entrar no chroot:
-```
+Acesse o sistema instalado em `/mnt` para continuar a configuração.
+```bash
 xchroot /mnt /bin/bash
 ```
+
 ## Configurar GRUB
 1. Crie o path para suportar o grub
 ```bash
