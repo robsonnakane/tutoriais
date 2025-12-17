@@ -106,7 +106,7 @@ wpa_passphrase "NOME_DA_REDE_WIFI" "SENHA_DA_REDE" > wifi.conf
 wpa_supplicant -B -i wlan0 -c wifi.conf
 dhcpcd wlan0
 ```
->NOTA: wlan0 pode variar (wlp2s0, wlp0s3, etc.)  
+> 📌 **Nota:** wlan0 pode variar (wlp2s0, wlp0s3, etc.)  
 ip -br a ajuda a identificar a interface correta
 
 Testar a conexão:
@@ -114,8 +114,7 @@ Testar a conexão:
 ping -c3 8.8.8.8
 ping -c3 repo-default.voidlinux.org
 ```
-
-## Instale alguns necessários pacotes:
+## Instalar pacotes necessários
 ```bash
 xbps-install -Sy xbps parted nano vim zstd xz bash-completion
 ```
