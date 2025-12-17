@@ -19,11 +19,17 @@ loadkeys br-abnt2
 ```
 
 4. Ative o login do usuário **root** via SSH.  
-Isso é necessário para acessar a **VM a partir do host** e continuar a instalação remotamente; depois disso, os comandos poderão ser executados diretamente no terminal via SSH.
+Isso é necessário para acessar a **VM a partir do host** e continuar a instalação remotamente; depois disso, os comandos poderão ser colados/executados diretamente no terminal via SSH.
 ```bash
 echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+```
+5. Reinicie o serviço ssh
+```
 sv restart sshd
-ip a
+```
+6. Exiba o IP da interface de rede
+```
+ip -4 route get 1.1.1.1 | awk '{print $7}'
 ```
 > Anote o IP da interface de rede e utilize-o para conectar-se à VM via SSH.
 
