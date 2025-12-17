@@ -12,13 +12,15 @@ password : voidlinux
 ```
 bash
 ```
-3. Alterar o shell padrão do usuário root para Bash
-```
-chsh -s /bin/bash root
-```
-4. Troque o layout de teclado para ABNT2
+
+3. Troque o layout de teclado para ABNT2
 ```bash
 loadkeys br-abnt2
+```
+
+4. Alterar o shell padrão do usuário root para Bash
+```
+chsh -s /bin/bash root
 ```
 5. Ativar login root via para acesso ssh
 ```
