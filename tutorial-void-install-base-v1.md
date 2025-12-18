@@ -259,7 +259,7 @@ cp -f /boot/efi/EFI/void/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-## Criar usuário
+## Criando e configurando usuários
 
 ⚠️ **IMPORTANTE:** defina abaixo o nome do usuário real.
 ```bash
@@ -271,17 +271,17 @@ Crie o usuário com diretório home, grupos básicos e shell Bash:
 useradd -m -G audio,video,wheel,tty -s /bin/bash ${NEWUSER}
 ```
 
-## Definir senha do teu usuário (IMPORTANTE)
+Definir senha do teu usuário (IMPORTANTE)
 ```bash
 passwd ${NEWUSER}
 ```
 
-## Definir senha do usuário root (IMPORTANTE)
+Definir senha do usuário root (IMPORTANTE)
 ```bash
 passwd root
 ```
 
-## Alterar o shell padrão do usuário root para Bash
+Alterar o shell padrão do usuário root para Bash
 ```bash
 chsh -s /bin/bash root
 ```
