@@ -271,12 +271,12 @@ Crie o usuário com diretório home, grupos básicos e shell Bash:
 useradd -m -G audio,video,wheel,tty -s /bin/bash ${NEWUSER}
 ```
 
-Definir senha do teu usuário (IMPORTANTE)
+Definir senha do teu usuário (***IMPORTANTE***)
 ```bash
 passwd ${NEWUSER}
 ```
 
-Definir senha do usuário root (IMPORTANTE)
+Definir senha do usuário root (***IMPORTANTE***)
 ```bash
 passwd root
 ```
