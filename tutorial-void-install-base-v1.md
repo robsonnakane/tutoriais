@@ -90,8 +90,8 @@ ping -c3 repo-default.voidlinux.org
 ```
 
 ## Ative o login do usuário **root** via SSH.  
-- Este passo aplica-se apenas quando o sistema está sendo executado em uma VM; em caso de boot local (sem VM), a instalação pode prosseguir normalmente pelo terminal local.
-Isso é necessário para acessar a **VM a partir do host** e continuar a instalação remotamente; depois disso, os comandos poderão ser colados/executados diretamente no terminal via SSH.
+Este passo aplica-se apenas quando o sistema está sendo executado em uma VM; em caso de boot local (sem VM), a instalação pode prosseguir normalmente pelo terminal local.  
+- Isso é necessário para acessar a **VM a partir do host** e continuar a instalação remotamente; depois disso, os comandos poderão ser colados/executados diretamente no terminal via SSH.
 ```bash
 echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 ```
