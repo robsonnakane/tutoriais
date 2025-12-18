@@ -187,7 +187,7 @@ vim /opt/samba/etc/smb.conf
    realm = EDUCATUX.EDU
    encrypt passwords = yes
    # point to the services, the active interfaces
-   interfaces = lo eth0
+   interfaces = eth0
    bind interfaces only = yes
 
    log file = /opt/samba/var/log.%m
