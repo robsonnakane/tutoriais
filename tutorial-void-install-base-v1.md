@@ -69,7 +69,7 @@ bash
 loadkeys br-abnt2
 ```
 
-## Conectar à Internet
+4. Conectar à Internet
 - Para **Wi-Fi** *(se estiver no cabo, pule esta etapa)*:
 ```bash
 wpa_passphrase "NOME_DA_REDE_WIFI" "SENHA_DA_REDE" > wifi.conf
@@ -83,7 +83,7 @@ dhcpcd wlan0
 > ip -br a
 > ```
 
-Testar a conexão:
+5. Testar a conexão:
 ```
 ping -c3 8.8.8.8
 ping -c3 repo-default.voidlinux.org
