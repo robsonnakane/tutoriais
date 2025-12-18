@@ -258,7 +258,6 @@ mkdir -p /var/log/samba-ad-dc
 ```bash
 cat > /etc/sv/samba-ad-dc/run << 'EOF'
 #!/bin/sh
-exec 2>&1
 exec /opt/samba/sbin/samba -i -M single --debuglevel=3
 EOF
 ```
@@ -484,7 +483,7 @@ vim /opt/samba/etc/smb.conf
         workgroup = EDUCATUX
         idmap_ldb:use rfc2307 = yes
         # point to the services, the active interfaces
-    	interfaces = lo eth0
+    	interfaces = eth0
         bind interfaces only = yes
 
 [sysvol]
@@ -537,6 +536,30 @@ root     28034  0.0  3.3 133112 67156 ?        Ss   01:14   0:00 /opt/samba/sbin
 root     28038  0.0  1.6 129152 33432 ?        S    01:14   0:00 samba: tfork waiter process(28039)
 root     28039  0.0  3.1 127588 63240 ?        Ss   01:14   0:00 /opt/samba/sbin/winbindd -D --option=server role check:inhibit=yes --foreground
 root     28180  0.0  0.1   6696  2556 pts/0    S+   02:10   0:00 grep samba
+```
+
+```bash
+samba-tool processes
+```
+
+## Result received:
+
+```bash
+ Service:                          PID
+--------------------------------------
+cldap_server                      1012
+dnssrv                            1012
+dnsupdate                         1012
+dreplsrv                          1012
+ft_scanner                        1012
+kccsrv                            1012
+kdc_server                        1012
+ldap_server                       1012
+nbt_server                        1012
+notify-daemon                     1016
+rpc_server                        1012
+samba                             1012
+winbind_server                    1019
 ```
 
 ```bash
@@ -678,53 +701,6 @@ Password for [EDUCATUX\administrator]:
   Version                          : 50
   dwDpFlags                     : DNS_DP_AUTOCREATED DNS_DP_FOREST_DEFAULT DNS_DP_ENLISTED
   pszDpFqdn                     : ForestDnsZones.educatux.edu
-```
-
-```bash
-samba-tool user show administrator
-```
-
-## Result received:
-
-```bash
-dn: CN=Administrator,CN=Users,DC=educatux,DC=edu
-objectClass: top
-objectClass: person
-objectClass: organizationalPerson
-objectClass: user
-cn: Administrator
-description: Built-in account for administering the computer/domain
-instanceType: 4
-whenCreated: 20251127040618.0Z
-uSNCreated: 3889
-name: Administrator
-objectGUID: 732e3aed-f232-427d-9377-5bf7bc79cd8e
-userAccountControl: 512
-badPwdCount: 0
-codePage: 0
-countryCode: 0
-badPasswordTime: 0
-lastLogoff: 0
-pwdLastSet: 134086899781242602
-primaryGroupID: 513
-objectSid: S-1-5-21-294413610-3908852046-3961109876-500
-adminCount: 1
-accountExpires: 9223372036854775807
-sAMAccountName: Administrator
-sAMAccountType: 805306368
-objectCategory: CN=Person,CN=Schema,CN=Configuration,DC=educatux,DC=edu
-isCriticalSystemObject: TRUE
-memberOf: CN=Domain Admins,CN=Users,DC=educatux,DC=edu
-memberOf: CN=Schema Admins,CN=Users,DC=educatux,DC=edu
-memberOf: CN=Enterprise Admins,CN=Users,DC=educatux,DC=edu
-memberOf: CN=Group Policy Creator Owners,CN=Users,DC=educatux,DC=edu
-memberOf: CN=Administrators,CN=Builtin,DC=educatux,DC=edu
-lastLogonTimestamp: 134086916533352620
-whenChanged: 20251127043413.0Z
-uSNChanged: 4307
-lastLogon: 134086917409338150
-logonCount: 5
-distinguishedName: CN=Administrator,CN=Users,DC=educatux,DC=edu
 ```
 
 ## 🧪 Validate Kerberos ticket exchange.

@@ -306,6 +306,30 @@ sv status samba-ad-dc
 run: samba-ad-dc: (pid 28032) 4s; run: log: (pid 28031) 4s
 ```
 
+```bash
+samba-tool processes
+```
+
+## Result received:
+
+```bash
+ Service:                          PID
+--------------------------------------
+cldap_server                      1012
+dnssrv                            1012
+dnsupdate                         1012
+dreplsrv                          1012
+ft_scanner                        1012
+kccsrv                            1012
+kdc_server                        1012
+ldap_server                       1012
+nbt_server                        1012
+notify-daemon                     1016
+rpc_server                        1012
+samba                             1012
+winbind_server                    1019
+```
+
 ## Validar os logs online:
 
 ```bash
@@ -488,7 +512,7 @@ cat /opt/samba/etc/smb.conf
         workgroup = EDUCATUX
         idmap_ldb:use rfc2307 = yes
         # aponte aos serviços, as interfaces ativas
-        interfaces = lo eth0
+        interfaces = eth0 
         bind interfaces only = yes
 
 [sysvol]
