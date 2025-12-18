@@ -447,6 +447,7 @@ Reinicie a máquina física ou a VM para testar o boot real:
 ```bash
 reboot
 ```
+> 📌 **Nota: Não esquecer de remover a mídia de instalação.  
 
 # 🎉 Enjoy!
 O **Void Linux** agora está instalado e pronto para uso.
