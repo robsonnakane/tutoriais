@@ -315,16 +315,31 @@ EOF
 chmod 440 /etc/sudoers.d/g_wheel
 ```
 
+# Criando e configurando usuários
+
+⚠️ **IMPORTANTE:** defina abaixo o nome do usuário real.
+```bash
+export NEWUSER=seu_usuario_aqui
 ```
-# Criar usuário
-NEWUSER=seunomeaqui
+
+Crie o usuário com diretório home, grupos básicos e shell Bash:
+```bash
 useradd -m -G audio,video,wheel,tty -s /bin/bash ${NEWUSER}
+```
+
+Definir senha do teu usuário (***IMPORTANTE***)
+```bash
 passwd ${NEWUSER}
 ```
 
-```
-# Reconfigurar senha root - ⚠️    IMPORTANTE:
+Definir senha do usuário root (***IMPORTANTE***)
+```bash
 passwd root
+```
+
+Alterar o shell padrão do usuário root para Bash
+```bash
+chsh -s /bin/bash root
 ```
 ---
 
