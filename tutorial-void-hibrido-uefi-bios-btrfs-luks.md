@@ -36,12 +36,13 @@ login    : root
 password : voidlinux
 ```
 
-2. Troque o shell de sh para o bash. O dash/sh NÃO suporta várias coisas que muitos scripts usam.
+2. Troque o shell de *sh* para o *bash*.  
+O *dash/sh* **NÃO implementa** vários recursos que muitos scripts usam.
 ```bash
 bash
 ```
 
-3. Troque o layout de teclado:
+3. Troque o layout de teclado para **ABNT2**, garantindo o mapeamento correto de acentos e símbolos:
 ```bash
 loadkeys br-abnt2
 ```
