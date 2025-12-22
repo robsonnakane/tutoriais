@@ -510,12 +510,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # ▶️    19. Configurações customizadas dos usuários:
 
-1. Alterar o shell padrão do usuário root para Bash
 ```
-chsh -s /bin/bash root
-```
-2. Personalizar o /etc/xbps.d/00-repository-main.conf
-```
+# Personalizar o /etc/xbps.d/00-repository-main.conf
 mkdir -pv /etc/xbps.d
 cat << 'EOF' >> /etc/xbps.d/00-repository-main.conf
 repository=https://repo-fastly.voidlinux.org/current
@@ -529,28 +525,21 @@ repository=https://void.chililinux.com/voidlinux/current
 #repository=https://void.chililinux.com/voidlinux/current/multilib
 #repository=https://void.chililinux.com/voidlinux/current/multilib/nonfree
 EOF
-```
 
-3. Personalizar o /etc/rc.conf. Define o fuso horário, layout do teclado e fonte padrão do console. Altere conforme necessidade.
-```
+# Personalizar o /etc/rc.conf. Define o fuso horário, layout do teclado e fonte padrão do console. Altere conforme necessidade.
 cat << EOF >> /etc/rc.conf
 TIMEZONE="${TIMEZONE}"
 KEYMAP="${KEYMAP}"
 FONT=Lat2-Terminus16
 EOF
-```
 
-4. Personalizar o .bashrc do root
-> confira se criou o usuário no passo anterior
-```
+# Personalizar o .bashrc do root
 wget --quiet --no-check-certificate \
    -O /etc//skel/.bashrc \
    "https://raw.githubusercontent.com/voidlinux-br/void-installer/refs/heads/main/.bashrc"
 chown root:root /etc/skel/.bashrc
 chmod 644 /etc/skel/.bashrc
-```
 
-```
 cat << 'EOF' > /etc/skel/.bash_profile
 # ~/.bash_profile — carrega o .bashrc no Void
 
@@ -559,9 +548,7 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 EOF
-```
 
-```
 # copia para o root e usuario
 for d in /root "/home/${NEWUSER}"; do
    cp -f /etc/skel/.bash_profile "$d/"
@@ -570,17 +557,15 @@ done
 
 chown "${NEWUSER}:${NEWUSER}" "/home/${NEWUSER}/.bash_profile" "/home/${NEWUSER}/.bashrc"
 chmod 644 "/home/${NEWUSER}/.bash_profile" "/home/${NEWUSER}/.bashrc"
-```
 
-5. baixar svlogtail customizado
-```
+# baixar svlogtail customizado
 wget --quiet --no-check-certificate \
   -O /usr/bin/svlogtail \
   "https://raw.githubusercontent.com/voidlinux-br/void-installer/refs/heads/main/svlogtail"
 chmod +x /usr/bin/svlogtail
 ```
 
-6. Configurar ssh (opcional, mas recomendável):
+2. Configurar ssh (opcional, mas recomendável):
 ```
 mkdir -pv /etc/ssh/sshd_config.d/
 cat << 'EOF' > /etc/ssh/sshd_config.d/10-custom.conf
