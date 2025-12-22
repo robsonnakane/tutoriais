@@ -150,10 +150,10 @@ parted --script "${DEVICE}" -- \
   align-check optimal 1
 parted --script "${DEVICE}" -- print
 ```
-- 1. Partição 1 → BIOS boot (bios_grub, sem FS, não monta)  
-- 2. Partição 2 → EFI (FAT32)  
-- 3. Partição 3 → ROOT (vamos formatar depois com EXT4/XFS/JFS/BTRFS, com ou sem LUKS)  
-Usei mkpart primary 514MiB 100% sem especificar FS justamente pra não amarrar o FS. Tu escolhe o FS depois.
+> 1. Partição 1 → BIOS boot (bios_grub, sem FS, não monta)  
+> 2. Partição 2 → EFI (FAT32)  
+> 3. Partição 3 → ROOT (vamos formatar depois com EXT4/XFS/JFS/BTRFS, com ou sem LUKS)  
+> 4. Usei mkpart primary 514MiB 100% sem especificar FS justamente pra não amarrar o FS. Tu escolhe o FS depois.
 ---
 
 # ▶️    6. Escolher o modo de instalação (NORMAL ou LUKS)
