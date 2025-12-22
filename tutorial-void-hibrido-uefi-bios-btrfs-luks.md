@@ -223,7 +223,7 @@ mount -o defaults,noatime,ssd,compress=zstd:3,discard=async,space_cache=v2,commi
 
 # ▶️    8. Preparar e montar a ESP (EFI)
 ```
-mkfs.fat -F32 "${DEV_EFI}"
+mkfs.fat -F32 -I "${DEV_EFI}"
 mkdir -p /mnt/boot/efi
 mount -v "${DEV_EFI}" /mnt/boot/efi
 ```
