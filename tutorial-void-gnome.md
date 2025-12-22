@@ -1,5 +1,4 @@
-# 🐧 Void Linux + GNOME — Tutorial Definitivo
-
+# 🐧 Void Linux + GNOME — Tutorial
 
 > ⚠️ **IMPORTANTE — LEIA ANTES DE COMEÇAR**
 >

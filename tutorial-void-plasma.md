@@ -1,5 +1,4 @@
-# 🐧 Void Linux + KDE Plasma + PipeWire — Tutorial Definitivo
-
+# 🐧 Void Linux + KDE Plasma + PipeWire — Tutorial
 
 > ⚠️ **IMPORTANTE — LEIA ANTES DE COMEÇAR**
 >
