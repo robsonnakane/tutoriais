@@ -510,6 +510,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # ▶️    19. Configurações customizadas dos usuários:
 
+1. Configurações de ambiente:
+
 ```
 # Personalizar o /etc/xbps.d/00-repository-main.conf
 mkdir -pv /etc/xbps.d
