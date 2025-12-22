@@ -68,7 +68,7 @@ ping -c3 8.8.8.8
 ping -c3 repo-default.voidlinux.org
 ```
 
-2. Instalar pacotes necessários
+2. Instalar pacotes necessários  
 ⚠️ **IMPORTANTE:**
 ```bash
 xbps-install -Sy xbps parted jfsutils xfsprogs nano zstd xz bash-completion
