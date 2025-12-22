@@ -159,7 +159,7 @@ parted --script "${DEVICE}" -- print
 # ▶️    6. Escolher o modo de instalação (NORMAL ou LUKS)
 ⚠️    **IMPORTANTE:**
 > Escolha APENAS UM dos dois blocos abaixo.  
-**NÃO** é pra rodar os dois.
+**NÃO** é pra rodar os dois passos.
 
 1. INSTALAÇÃO NORMAL **(sem LUKS)**
 ```bash
@@ -262,8 +262,12 @@ xbps-install -Sy -R https://repo-default.voidlinux.org/current \
 ---
 
 # ▶️    10. Gerar fstab no /mnt (chroot)
-```
+```bash
 xgenfstab -U /mnt > /mnt/etc/fstab
+```
+
+```bash
+cat /mnt/etc/fstab
 ```
 
 # ▶️    11. Acessar o sistema instalado usando chroot
