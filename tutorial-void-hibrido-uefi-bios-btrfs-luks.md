@@ -82,9 +82,9 @@ fdisk -l | grep -E '^(Disk|Disco) '
 - Exemplo abaixo: /dev/sda com 3 partições (BIOS, EFI, ROOT):
 ```
 export DEVICE=/dev/sda
-export DEV_BIOS=/dev/sda1
-export DEV_EFI=/dev/sda2
-export DEV_RAIZ=/dev/sda3
+export DEV_BIOS=${DEVICE}1
+export DEV_EFI=${DEVICE}2
+export DEV_RAIZ=${DEVICE}3
 export DEV_LUKS=/dev/mapper/cryptroot
 export KEYMAP=br-abnt2
 export TIMEZONE=America/Sao_Paulo
