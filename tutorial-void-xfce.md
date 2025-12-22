@@ -19,8 +19,7 @@ sudo xbps-install -Syu
 
 ```
 #limpar cache de pacotes
-sudo  rm -fv /var/cache/xbps/*.xbps
-sudo  rm -fv /var/cache/xbps/*.sig*
+sudo rm -fv /var/cache/xbps/*.xbps /var/cache/xbps/*.sig*
 ```
 
 ## 2. Instalar Xorg + Xinit + Xterm
