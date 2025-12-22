@@ -114,7 +114,7 @@ Em outras palavras:
 
 ---
 
-# ▶️    5. Particionar usando o parted (automático)
+# ▶️    5. Particionar disco
 - A partição BIOS **DEVE** ser a primeira.  
 Isso aumenta compatibilidade com placas-mãe antigas, bootloaders problemáticos e BIOS que esperam o código de boot nas primeiras áreas do disco.  
 A ESP pode vir depois sem problema algum — UEFI não liga para a posição.
