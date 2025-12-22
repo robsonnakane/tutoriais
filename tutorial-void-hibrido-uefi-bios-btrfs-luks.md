@@ -158,9 +158,6 @@ export DISK="${DEV_RAIZ}"
 
 2. INSTALAÇÃO **COM LUKS** (root criptografado)
 ```
-# Remove qualquer assinatura antiga da partição raiz (FS/LUKS/etc)
-wipefs -a "${DEV_RAIZ}"
-
 # Criptografar SOMENTE a partição raiz em LUKS1 (compatível com GRUB) - nunca o disco inteiro
 # Criptografar a partição confirmando com YES:  
 cryptsetup luksFormat --type luks1 "${DEV_RAIZ}"
