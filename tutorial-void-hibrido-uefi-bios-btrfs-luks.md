@@ -119,6 +119,8 @@ Porque declarar tudo no início deixa os próximos processo à prova de erro de 
 2. Definir KEYMAP e TIMEZONE (altere conforme sua necessidade):  
 ```bash
 export KEYMAP=br-abnt2
+```
+```bash
 export TIMEZONE=America/Sao_Paulo
 ```
 
