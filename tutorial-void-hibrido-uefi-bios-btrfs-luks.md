@@ -83,7 +83,7 @@ fdisk -l | grep -E '^(Disk|Disco) '
 
 1. Definir os devices (ANTES de usar qualquer um):  
    > Assumiremos para o tutorial `/dev/sda` ou `/dev/nvme0n1` (nvme)
-- Ajuste aqui conforme o teu disco. 
+- Ajuste conforme o teu disco (escolha apenas um modelo) 
 Para discos **normais** ex.: /dev/sda com 3 partições (BIOS, EFI, ROOT)
 ```bash
 export DEVICE=/dev/sda
