@@ -41,7 +41,12 @@ password : voidlinux
 bash
 ```
 
-3. Cole no terminal (opcional) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
+3. Troque o layout de teclado para o KEYMAP escolhido acima:
+```bash
+loadkeys "${KEYMAP}"
+```
+
+4. Cole no terminal (opcional) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
 ```
 export PS1='\[\e[1;32m\]\u\[\e[1;33m\]@\[\e[1;36m\]\h\[\e[1;31m\]:\w \
 $([[ $? -eq 0 ]] && echo -e "\e[1;32m✔" || echo -e "\e[1;31m✘$?") \
@@ -104,11 +109,6 @@ DEV_LUKS → mapeamento do LUKS (/dev/mapper/cryptroot)
 Porque declarar tudo no início deixa o processo à prova de erro.   
 Em outras palavras:  
 - 👉   Aqui você define a anatomia do disco. Todo o resto do guia apenas segue essas variáveis.
-
-2. Troque o layout de teclado para o KEYMAP escolhido acima:
-```bash
-loadkeys "${KEYMAP}"
-```
 
 ---
 
