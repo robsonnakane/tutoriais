@@ -31,13 +31,13 @@ https://voidlinux.org/download/
 ```
 
 1. Entre como root.
-```
+```bash
 login    : root
 password : voidlinux
 ```
 
 2. Troque o shell de sh para o bash. O dash/sh NÃO suporta várias coisas que muitos scripts usam.
-```
+```bash
 bash
 ```
 
@@ -47,7 +47,7 @@ loadkeys br-abnt2
 ```
 
 4. Cole no terminal (opcional) — Prompt com cores, usuário@host:caminho e status do último comando (✔/✘). Útil e bonito.
-```
+```bash
 export PS1='\[\e[1;32m\]\u\[\e[1;33m\]@\[\e[1;36m\]\h\[\e[1;31m\]:\w \
 $([[ $? -eq 0 ]] && echo -e "\e[1;32m✔" || echo -e "\e[1;31m✘$?") \
 \[\e[0m\]\$ '
@@ -55,27 +55,27 @@ $([[ $? -eq 0 ]] && echo -e "\e[1;32m✔" || echo -e "\e[1;31m✘$?") \
 
 # ▶️    2. Conectar à Internet
 - Para Wi-Fi *(se estiver no cabo, pule esta etapa)*:
-```
+```bash
 wpa_passphrase "SSID" "SENHA" > wifi.conf
 wpa_supplicant -B -i wlan0 -c wifi.conf
 dhcpcd wlan0
 ```
 
 1. Testar a conexão:
-```
+```bash
 ping -c3 8.8.8.8
 ping -c3 repo-default.voidlinux.org
 ```
 
 2. Instale alguns necessários pacotes:
-```
+```bash
 xbps-install -Sy xbps parted jfsutils xfsprogs nano zstd xz bash-completion
 ```
 ---
 
 # ▶️    3. Identificar o disco
 1. Listar os discos disponíveis e anotar o nome do dispositivo (ex: `/dev/sda`, `/dev/vda`, `/dev/nvme0n1`):
-```
+```bash
 fdisk -l | grep -E '^(Disk|Disco) '
 ```
 
@@ -111,9 +111,9 @@ DEV_LUKS → mapeamento do LUKS (/dev/mapper/cryptroot)
 
 - 👉   Aqui você define a anatomia do disco. Todo o resto do guia apenas segue essas variáveis.  
 - 🔎   Por que isso é necessário?  
-Porque declarar tudo no início deixa o processo à prova de erro em outras palavras:  
+Porque declarar tudo no início deixa os próximos processo à prova de erro de digitação.  
 
-2. Definir KEYMAP e TIMEZONE:  
+2. Definir KEYMAP e TIMEZONE (altere conforme sua necessidade):  
 ```bash
 export KEYMAP=br-abnt2
 export TIMEZONE=America/Sao_Paulo
