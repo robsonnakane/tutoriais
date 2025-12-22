@@ -91,6 +91,7 @@ export DEVICE=/dev/sda
 export DEV_BIOS=${DEVICE}1
 export DEV_EFI=${DEVICE}2
 export DEV_RAIZ=${DEVICE}3
+export DEV_LUKS=/dev/mapper/cryptroot
 ```
 Para discos **NVMe**, o sufixo da partição muda (`p`)
 ```bash
@@ -98,6 +99,7 @@ export DEVICE=/dev/nvme0n1
 export DEV_BIOS=${DEVICE}p1
 export DEV_EFI=${DEVICE}p2
 export DEV_RAIZ=${DEVICE}p3
+export DEV_LUKS=/dev/mapper/cryptroot
 ```
 
 > 📌 **Nota:**  
@@ -112,12 +114,7 @@ Porque declarar tudo no início deixa o processo à prova de erro.
 Em outras palavras:  
 - 👉   Aqui você define a anatomia do disco. Todo o resto do guia apenas segue essas variáveis.
 
-2. Definir o mapper do LUKS:  
-```bash
-export DEV_LUKS=/dev/mapper/cryptroot
-```
-
-3. Definir KEYMAP e TIMEZONE:  
+2. Definir KEYMAP e TIMEZONE:  
 ```bash
 export KEYMAP=br-abnt2
 export TIMEZONE=America/Sao_Paulo
