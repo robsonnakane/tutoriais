@@ -263,10 +263,12 @@ xbps-install -Sy -R https://repo-default.voidlinux.org/current \
 
 # ▶️    10. Gerar fstab no /mnt (chroot)
 ```bash
+# Gerar o fstab em /mnt/etc/fstab
 xgenfstab -U /mnt > /mnt/etc/fstab
 ```
 
 ```bash
+# conferir se gerou corretamente
 cat /mnt/etc/fstab
 ```
 
