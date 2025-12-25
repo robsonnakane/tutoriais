@@ -117,9 +117,8 @@ sudo ssh <ip-da-vm>
 ## Configure um prompt colorido no terminal (opcional)
 Irá exibir usuário, host, caminho atual e o status do último comando:
 ```bash
-export PS1='\[\e[1;32m\]\u\[\e[1;33m\]@\[\e[1;36m\]\h\[\e[1;31m\]:\w \
-$([[ $? -eq 0 ]] && echo -e "\e[1;32m✔" || echo -e "\e[1;31m✘$?") \
-\[\e[0m\]\$ '
+export PROMPT_COMMAND='RET=$?'
+export PS1='\[\e[1;33m\]\u\[\e[0m\]@\[\e[1;35m\]\h\[\e[0m\]:\[\e[0;37m\]\w\[\e[0m\] \[\e[1;32m\]$( [ $RET -eq 0 ] && printf ✔ || printf "\e[1;31m✘$RET" )\[\e[0m\] \$ '
 ```
 > 📌 Este prompt vale apenas para a sessão atual; para torná-lo permanente, adicione ao `.bashrc`.
 
@@ -221,6 +220,16 @@ xchroot /mnt /bin/bash
 ```
 
 ## Gerar o INITRAMFS
+Configuração do Dracut para ambientes de virtualização (VM-safe)
+```bash
+cat > /etc/dracut.conf.d/99-vm-safe.conf << 'EOF'
+# /etc/dracut.conf.d/99-vm-safe.conf
+hostonly=no
+compress="gzip"
+add_drivers+=" virtio virtio_pci virtio_blk virtio_net virtio_scsi "
+EOF
+```
+
 Detecta automaticamente a versão do kernel instalada e gera o `initramfs` correspondente usando o **dracut**.
 ```bash
 mods=(/usr/lib/modules/*)
@@ -367,7 +376,7 @@ FONT=Lat2-Terminus16
 EOF
 ```
 
-MOdulos virtio (maquina virtual).  
+Modulos virtio (maquina virtual).  
 ```bash
 cat > /etc/modules-load.d/virtio.conf << 'EOF'
 virtio
@@ -376,13 +385,6 @@ virtio_net
 virtio_blk
 virtio_scsi
 EOF
-```
-
-```bash
-# /etc/dracut.conf.d/99-vm-safe.conf
-hostonly=no
-compress="gzip"
-add_drivers+=" virtio virtio_pci virtio_blk virtio_net virtio_scsi "
 ```
 
 ## Personalizar o `.bashrc` do usuário
