@@ -52,6 +52,7 @@ Pull Requests são bem-vindos — mas com regra clara:
 Telegram : **https://t.me/VoidLinuxBrasil** **Void Linux BR** - (Grupo alternativo, funcional e sem frescura.)  
 Youtube  : **https://youtube.com/@voidlinuxbr**  
 Github   : **https://github.com/voidlinuxbr**  
+Discord  :
 
 ---
 
@@ -65,4 +66,6 @@ Use, redistribua, melhore — só não seja canalha de apagar créditos.
 ## 🦾 Propósito
 
 Criar a melhor documentação prática de Void Linux em português, feita por quem realmente usa o sistema no dia a dia.
+- Vilmar Catafesta <vcatafesta@gmail.com>
+- Edu Charquero <educharquero@gmail.com>
 
