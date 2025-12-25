@@ -24,16 +24,16 @@ Aqui a ideia é simples:
 
 ```
 tutoriais/
- ├── base/
- ├── DE/
- ├── samba/
- ├── jitsi/
- ├── old/
- ├── sound/
- └── misc/
+ ├── base/     # Instalação base, sistema mínimo, boot, rede e pós-instalação
+ ├── DE/       # Ambientes gráficos (XFCE, KDE, i3, Xorg, Wayland, etc.)
+ ├── samba/    # Compartilhamento de arquivos, Samba/SMB, permissões e redes mistas
+ ├── jitsi/    # Jitsi Meet, videoconferência, Docker, NAT, TURN/STUN
+ ├── old/      # Conteúdo legado, tutoriais antigos ou mantidos só para referência
+ ├── sound/    # Áudio: ALSA, PulseAudio, PipeWire, microfone e troubleshooting
+ └── misc/     # Assuntos diversos que não se encaixam nas outras categorias
 ```
 
-Cada diretório contém um `.md` focado, direto, e testado.
+Cada diretório contém `.mds` focado, direto, e testado.
 
 ---
 
