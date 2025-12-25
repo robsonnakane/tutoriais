@@ -56,13 +56,6 @@ Discord  :
 
 ---
 
-## 📄 Licença
-
-Conteúdo liberado sob **MIT**.  
-Use, redistribua, melhore — só não seja canalha de apagar créditos.
-
----
-
 ## 🦾 Propósito
 
 Criar a melhor documentação prática de Void Linux em português, feita por quem realmente usa o sistema no dia a dia.
@@ -72,4 +65,24 @@ Criar a melhor documentação prática de Void Linux em português, feita por qu
 ## Repositório/Webpage da Comunidade
 - repository=https://void.chililinux.com/voidlinux/current
 - https://void.chililinux.com/
+
+---
+
+## 📄 Licença
+
+Conteúdo liberado sob **MIT**.  
+Use, redistribua, melhore — só não seja canalha de apagar créditos.
+
+---
+
+# DISCLAIMER
+
+> Este tutorial é livre: você pode usar, copiar, modificar e redistribuir como quiser.  
+> O conteúdo é disponibilizado sob a **Licença MIT** e pode incluir trechos ou comandos derivados de softwares de código aberto, sujeitos às suas próprias licenças.
+>
+> Nenhuma garantia é fornecida — tudo aqui é entregue **“no estado em que se encontra”**.  
+> Use por sua conta e risco. Nem o autor, nem colaboradores, nem o Void Linux são responsáveis por perdas, danos, falhas de sistema ou qualquer consequência do uso deste material.
+>
+> Você é livre para revisar, adaptar e gerar sua própria versão deste tutorial.
+
 
