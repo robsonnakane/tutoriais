@@ -1,6 +1,6 @@
 # 🐧 Tutoriais Void Linux BR
 
-Repositório oficial com tutoriais, guias, anotações e macetes para instalar, configurar e dominar o **Void Linux** do jeito certo — direto, claro e sem frescura.
+Repositório oficial da Comunidade VoidLInuxBR com tutoriais, guias, anotações e macetes para instalar, configurar e dominar o **Void Linux** do jeito certo — direto, claro e sem frescura.
 
 Aqui a ideia é simples:
 - Tudo organizado.
