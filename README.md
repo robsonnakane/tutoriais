@@ -69,3 +69,7 @@ Criar a melhor documentação prática de Void Linux em português, feita por qu
 - Vilmar Catafesta <vcatafesta@gmail.com>
 - Edu Charquero <educharquero@gmail.com>
 
+## Repositório/Webpage da Comunidade
+- repository=https://void.chililinux.com/voidlinux/current
+- https://void.chililinux.com/
+
