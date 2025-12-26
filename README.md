@@ -1,12 +1,29 @@
 # 🐧 Tutoriais Void Linux BR
 
-Repositório oficial com tutoriais, guias, anotações e macetes para instalar, configurar e dominar o **Void Linux** do jeito certo — direto, claro e sem frescura.
+Repositório oficial da Comunidade VoidLInuxBR com tutoriais, guias, anotações e macetes para instalar, configurar e dominar o **Void Linux** do jeito certo — direto, claro e sem frescura.
 
 Aqui a ideia é simples:
 - Tudo organizado.
 - Tudo completo.
 - Nada pela metade.
 - Sem “chute”, sem “talvez”, sem “acho que funciona”.
+
+---
+
+## 🔧 Estrutura do repositório
+
+```
+tutoriais/
+ ├── base/     # Instalação base, sistema mínimo, boot, rede e pós-instalação
+ ├── DE/       # Ambientes gráficos (XFCE, KDE, i3, Xorg, Wayland, etc.)
+ ├── samba/    # Compartilhamento de arquivos, Samba/SMB, permissões e redes mistas
+ ├── jitsi/    # Jitsi Meet, videoconferência, Docker, NAT, TURN/STUN
+ ├── old/      # Conteúdo legado, tutoriais antigos ou mantidos só para referência
+ ├── sound/    # Áudio: ALSA, PulseAudio, PipeWire, microfone e troubleshooting
+ └── misc/     # Assuntos diversos que não se encaixam nas outras categorias
+```
+
+Cada diretório contém `.mds` focado, direto, e testado.
 
 ---
 
@@ -17,23 +34,6 @@ Aqui a ideia é simples:
 - Truques úteis, wrappers, scripts e ajustes de sistema
 - Configurações validadas **na prática**
 - Conteúdo mantido pela comunidade Void Linux BR
-
----
-
-## 🔧 Estrutura do repositório
-
-```
-tutoriais/
- ├── instalacao/
- ├── pos-instalacao/
- ├── btrfs/
- ├── luks/
- ├── dicas/
- ├── wrappers/
- └── misc/
-```
-
-Cada diretório contém um `.md` focado, direto, e testado.
 
 ---
 
@@ -48,10 +48,23 @@ Pull Requests são bem-vindos — mas com regra clara:
 
 ---
 
-## 📡 Comunidade
+## 📡 Comunidade  
+Telegram : **https://t.me/VoidLinuxBrasil** **Void Linux BR** - (Grupo alternativo, funcional e sem frescura.)  
+Youtube  : **https://youtube.com/@voidlinuxbr**  
+Github   : **https://github.com/voidlinuxbr**  
+Discord  :
 
-Telegram: **Void Linux BR**  
-(Grupo alternativo, funcional e sem frescura.)
+---
+
+## 🦾 Propósito
+
+Criar a melhor documentação prática de Void Linux em português, feita por quem realmente usa o sistema no dia a dia.
+- Vilmar Catafesta <vcatafesta@gmail.com>
+- Edu Charquero <educharquero@gmail.com>
+
+## Repositório/Webpage da Comunidade
+- repository=https://void.chililinux.com/voidlinux/current
+- https://void.chililinux.com/
 
 ---
 
@@ -62,7 +75,14 @@ Use, redistribua, melhore — só não seja canalha de apagar créditos.
 
 ---
 
-## 🦾 Propósito
+# DISCLAIMER
 
-Criar a melhor documentação prática de Void Linux em português, feita por quem realmente usa o sistema no dia a dia.
+> Estes tutoriais são livres: você pode usar, copiar, modificar e redistribuir como quiser.  
+> O conteúdo é disponibilizado sob a **Licença MIT** e pode incluir trechos ou comandos derivados de softwares de código aberto, sujeitos às suas próprias licenças.
+>
+> Nenhuma garantia é fornecida — tudo aqui é entregue **“no estado em que se encontra”**.  
+> Use por sua conta e risco. Nem o autor, nem colaboradores, nem o Void Linux são responsáveis por perdas, danos, falhas de sistema ou qualquer consequência do uso deste material.
+>
+> Você é livre para revisar, adaptar e gerar sua própria versão deste tutorial.
+
 
