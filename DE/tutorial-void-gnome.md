@@ -61,6 +61,7 @@ sudo xbps-install -y gnome \
    p7zip \
    unzip \
    eog \
+   noto-fonts-emoji \
    htop
 ```
 

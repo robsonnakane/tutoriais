@@ -69,6 +69,7 @@ sudo xbps-install -y xfce4 \
    gvfs \
    p7zip \
    unzip \
+   noto-fonts-emoji \
    htop
 ```
 
