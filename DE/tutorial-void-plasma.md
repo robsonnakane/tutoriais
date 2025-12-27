@@ -44,7 +44,7 @@ sudo xbps-install -Syu
 
 ## 2. Instalar o Plasma completo (meta-pacote)
 ```
-sudo xbps-install -y plasma
+sudo xbps-install -y plasma noto-fonts-emoji
 ```
 
 ## 3. Instalar o SDDM (display manager oficial do KDE)
