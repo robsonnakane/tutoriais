@@ -240,7 +240,7 @@ sudo ln -sf /etc/sv/NetworkManager /var/service/
 ```
 
 ## 19. Habilitar o display manager escolhido (runit)
-Atenção: **habilite somente um deles**.
+⚠️    Atenção:: **habilite somente um deles**.
 
 **LXDM**
 ```
