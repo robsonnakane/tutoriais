@@ -244,12 +244,12 @@ Atenção: **habilite somente um deles**.
 
 **LXDM**
 ```
-sudo ln -s /etc/sv/lxdm /var/service/
+sudo ln -sf /etc/sv/lxdm /var/service/
 ```
 
 **SDDM**
 ```
-sudo ln -s /etc/sv/sddm /var/service/
+sudo ln -sf /etc/sv/sddm /var/service/
 ```
 
 ## Finalização
