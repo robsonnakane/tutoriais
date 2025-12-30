@@ -89,7 +89,7 @@ sudo xbps-install -y lxdm
 ### 4.2 SDDM — moderno e completo
 
 ```
-sudo xbps-install -y sddm
+sudo xbps-install -y sddm voidbr-sddm-themes
 ```
 
 > Nota:  
