@@ -86,7 +86,7 @@ Escolha **apenas um** display manager para instalar e habilitar.
 sudo xbps-install -y lxdm
 ```
 
-### 4.2 SDDM — moderno e completo (ideal para KDE/Qt)
+### 4.2 SDDM — moderno e completo
 
 ```
 sudo xbps-install -y sddm
