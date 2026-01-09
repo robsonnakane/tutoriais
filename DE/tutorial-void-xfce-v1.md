@@ -130,8 +130,10 @@ sed -i 's/^Hidden=.*/Hidden=true/' ~/.config/autostart/xfce-polkit.desktop || ec
 
 ## 7. Instalar PipeWire (som moderno do Void)
 ```
-sudo xbps-install -y pipewire wireplumber alsa-pipewire pulseaudio-utils pavucontrol
+sudo xbps-install -y pipewire wireplumber alsa-pipewire pulseaudio-utils pavucontrol libspa-bluetooth libjack-pipewire alsa-plugins-pulseaudio xfce4-pulseaudio-plugin)
 ```
+
+
 
 ## 8. Integrar ALSA → PipeWire
 ```
