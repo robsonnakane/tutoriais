@@ -475,7 +475,7 @@ EOF
 ```
 wget --quiet --no-check-certificate \
    -O /etc//skel/.bashrc \
-   "https://raw.githubusercontent.com/voidlinux-br/void-installer/refs/heads/main/.bashrc"
+   "https://raw.githubusercontent.com/voidlinux-br/void-install/refs/heads/main/.bashrc"
 chown root:root /etc/skel/.bashrc
 chmod 644 /etc/skel/.bashrc
 ```
@@ -506,7 +506,7 @@ chmod 644 "/home/${NEWUSER}/.bash_profile" "/home/${NEWUSER}/.bashrc"
 ```
 wget --quiet --no-check-certificate \
   -O /usr/bin/svlogtail \
-  "https://raw.githubusercontent.com/voidlinux-br/void-installer/refs/heads/main/svlogtail"
+  "https://raw.githubusercontent.com/voidlinux-br/void-install/refs/heads/main/svlogtail"
 chmod +x /usr/bin/svlogtail
 ```
 

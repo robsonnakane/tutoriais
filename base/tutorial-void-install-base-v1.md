@@ -326,7 +326,7 @@ ln -sf /etc/sv/chronyd /var/service/
 
 # baixar svlogtail customizado (opcional, mas recomendável):
 wget --quiet --no-check-certificate -O /usr/bin/svlogtail \
-   "https://raw.githubusercontent.com/voidlinux-br/void-installer/refs/heads/main/svlogtail" && \
+   "https://raw.githubusercontent.com/voidlinux-br/void-install/refs/heads/main/svlogtail" && \
    chmod +x /usr/bin/svlogtail
 
 # Criar um resolv.conf
@@ -396,7 +396,7 @@ Cria um `.bash_profile` padrão e garante que o `.bashrc` seja carregado automat
 # Baixar .bashrc padrão para o /etc/skel
 wget --quiet --no-check-certificate \
   -O /etc/skel/.bashrc \
-  "https://raw.githubusercontent.com/voidlinux-br/void-installer/refs/heads/main/.bashrc"
+  "https://raw.githubusercontent.com/voidlinux-br/void-install/refs/heads/main/.bashrc"
 
 chown root:root /etc/skel/.bashrc
 chmod 644 /etc/skel/.bashrc
