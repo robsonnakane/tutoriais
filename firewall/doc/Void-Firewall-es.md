@@ -1,6 +1,6 @@
 #  🧩 TUTORIAL VOID LINUX – IMPLEMENTACIÓN DEL ESQUEMA DE SEGURIDAD – TALLERES DE LABORATORIO
 
-📌 Firewall con IP Público, Void Linux (glibc), IPTables (legacy), NAT, Port Knocking y Fail2ban
+📌 Firewall con IP Pública, Void Linux (glibc), IPTables (legacy), NAT, Port Knocking, Fail2ban y DNS recursivo
 
 ---
 
@@ -442,7 +442,7 @@ sudo sv start fail2ban
 sudo sv status fail2ban
 ```
 
-12. ✅ PRUEBA FAIL2BAN (ATENCIÓN, te bloqueas durante el acceso externo)
+## 12. ✅ PRUEBA FAIL2BAN (ATENCIÓN, te bloqueas durante el acceso externo)
 
 Ejecutar o tocar
 
@@ -464,7 +464,42 @@ Desbanear manualmente:
 sudo fail2ban-client set sshd unbanip X.X.X.X
 ```
 
-13. 🎉 LISTA DE VERIFICACIÓN FINAL
+## 13. ✅ El Firewall deberá resolver los nombres de las máquinas en la red interna y lo hará con el soporte del paquete independiente.
+
+Esta configuración sólo será válida hasta que SAMBA4 se cargue como un PDC interno como DNS de la red, después de lo cual deséchelo.
+
+```bash
+sudo xbps-install -y unbound
+```
+
+Configuración mínima:
+
+```bash
+sudo vim /etc/unbound/unbound.conf
+```
+
+Contenido
+
+```bash
+server:
+  interface: 0.0.0.0
+  access-control: 192.168.70.0/24 allow
+  do-ip4: yes
+  do-udp: yes
+  do-tcp: yes
+  hide-identity: yes
+  hide-version: yes
+  qname-minimisation: yes
+```
+
+Activar servicio (runit):
+
+```bash
+ln -s /etc/sv/unbound /var/service/
+sv start unbound
+```
+
+## 14. 🎉 LISTA DE VERIFICACIÓN FINAL
 
 - SSH invisible sin golpes
 - Golpe de un solo uso
@@ -474,10 +509,12 @@ sudo fail2ban-client set sshd unbanip X.X.X.X
 - NAT funcional
 - Cortafuegos persistente
 - A Proxmox solo se puede acceder a través de un túnel
+- DNS recursivo mínimo (Hasta que entre PDC)
 
 ---
 
 🎯 ¡ESO ES TODO AMIGOS!
+
 👉https://t.me/z3r0l135
 👉https://t.me/vcatafesta
 

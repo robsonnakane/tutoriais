@@ -1,6 +1,6 @@
 #  🧩 VOID LINUX 教程 — 安全方案实施 — 实验室研讨会
 
-📌 防火墙 com IP Público、Void Linux (glibc)、IPTables（旧版）、NAT、端口敲门和 Fail2ban
+📌 防火墙 com IP Público、Void Linux (glibc)、IPTables（旧版）、NAT、端口敲门、Fail2ban 和 DNS 递归
 
 ---
 
@@ -442,7 +442,7 @@ sudo sv start fail2ban
 sudo sv status fail2ban
 ```
 
-12. ✅ FAIL2BAN 测试（注意您在外部访问期间将自己锁定在外面）
+## 12. ✅ FAIL2BAN 测试（注意您在外部访问期间将自己锁定在外面）
 
 执行敲门
 
@@ -464,7 +464,42 @@ sudo fail2ban-client status sshd
 sudo fail2ban-client set sshd unbanip X.X.X.X
 ```
 
-13. 🎉 最终检查清单
+## 13. 防火墙需要解析内部网络上机器的名称，并且将在未绑定包的支持下完成此操作
+
+此配置仅在 SAMBA4 作为内部 PDC 上传为网络的 DNS 之前有效，之后丢弃它！
+
+```bash
+sudo xbps-install -y unbound
+```
+
+最低配置：
+
+```bash
+sudo vim /etc/unbound/unbound.conf
+```
+
+内容
+
+```bash
+server:
+  interface: 0.0.0.0
+  access-control: 192.168.70.0/24 allow
+  do-ip4: yes
+  do-udp: yes
+  do-tcp: yes
+  hide-identity: yes
+  hide-version: yes
+  qname-minimisation: yes
+```
+
+激活服务（运行单元）：
+
+```bash
+ln -s /etc/sv/unbound /var/service/
+sv start unbound
+```
+
+## 14. 🎉 最终检查清单
 
 - 隐形SSH无需敲门
 - 一次性敲击器
@@ -474,10 +509,12 @@ sudo fail2ban-client set sshd unbanip X.X.X.X
 - 功能性NAT
 - 持久防火墙
 - Proxmox 只能通过隧道访问
+- 最小递归 DNS（直到 PDC 进入）
 
 ---
 
 🎯 这就是大家！
+
 👉 https://t.me/z3r0l135
 👉 https://t.me/vcatafesta
 

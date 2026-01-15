@@ -1,6 +1,6 @@
 #  🧩 VOID LINUX チュートリアル — セキュリティ スキームの実装 – ラボラトリー ワークショップ
 
-📌 IP Público のファイアウォール、Void Linux (glibc)、IPTables (レガシー)、NAT、ポート ノッキング、Fail2ban
+📌 IP パブリックのファイアウォール、Void Linux (glibc)、IPTables (レガシー)、NAT、ポート ノッキング、Fail2ban、DNS recursivo
 
 ---
 
@@ -442,7 +442,7 @@ sudo sv start fail2ban
 sudo sv status fail2ban
 ```
 
-12. ✅ FAIL2BAN テスト (外部アクセス中はロックアウトされるので注意)
+## 12. ✅ FAIL2BAN テスト (外部アクセス中はロックアウトされるので注意)
 
 オノックを実行する
 
@@ -464,7 +464,42 @@ sudo fail2ban-client status sshd
 sudo fail2ban-client set sshd unbanip X.X.X.X
 ```
 
-13. 🎉 チェックリスト最終版
+## 13. ✅ ファイアウォールは内部ネットワーク上のマシンの名前を解決する必要があり、アンバインド パッケージのサポートを利用してこれを行います。
+
+この設定は、SAMBA4 がネットワークの DNS として内部 PDC としてアップロードされるまでのみ有効であり、その後は破棄されます。
+
+```bash
+sudo xbps-install -y unbound
+```
+
+最小構成:
+
+```bash
+sudo vim /etc/unbound/unbound.conf
+```
+
+コンテンツ
+
+```bash
+server:
+  interface: 0.0.0.0
+  access-control: 192.168.70.0/24 allow
+  do-ip4: yes
+  do-udp: yes
+  do-tcp: yes
+  hide-identity: yes
+  hide-version: yes
+  qname-minimisation: yes
+```
+
+サービス (runit) をアクティブ化します。
+
+```bash
+ln -s /etc/sv/unbound /var/service/
+sv start unbound
+```
+
+## 14. 🎉 最終チェックリスト
 
 - ノックなしの目に見えない SSH
 - 使い捨てノック
@@ -474,10 +509,12 @@ sudo fail2ban-client set sshd unbanip X.X.X.X
 - 機能的NAT
 - 永続的なファイアウォール
 - Proxmox はトンネル経由でのみアクセス可能
+- 最小限の再帰 DNS (PDC が入るまで)
 
 ---
 
 🎯 以上です!
+
 👉 チリ_REF_0_チリ
 👉 チリ_REF_0_チリ
 

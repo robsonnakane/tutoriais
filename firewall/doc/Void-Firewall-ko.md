@@ -1,6 +1,6 @@
 #  🧩 VOID LINUX 튜토리얼 — 보안 체계 구현 – 실험실 워크샵
 
-😀 IP Público, Void Linux(glibc), IPTables(레거시), NAT, Port Knocking 및 Fail2ban을 위한 방화벽
+😀 IP Público 방화벽, Void Linux(glibc), IPTables(레거시), NAT, Port Knocking, Fail2ban 및 DNS recursivo
 
 ---
 
@@ -442,7 +442,7 @@ sudo sv start fail2ban
 sudo sv status fail2ban
 ```
 
-12. ✅ FAIL2BAN 테스트(외부 액세스 중에는 자신을 잠글 수 있다는 주의)
+## 12. ✅ FAIL2BAN 테스트(외부 액세스 중에는 자신을 잠글 수 있다는 주의)
 
 실행 o 노크
 
@@ -464,7 +464,42 @@ sudo fail2ban-client status sshd
 sudo fail2ban-client set sshd unbanip X.X.X.X
 ```
 
-13. 🎉 체크리스트 최종
+## 13. ✅ 방화벽은 내부 네트워크에 있는 컴퓨터의 이름을 확인해야 하며 바인딩되지 않은 패키지의 지원을 통해 이를 수행합니다.
+
+이 구성은 SAMBA4가 네트워크의 DNS로서 내부 PDC로 업로드될 때까지만 유효하며 그 후에는 폐기됩니다!
+
+```bash
+sudo xbps-install -y unbound
+```
+
+최소 구성:
+
+```bash
+sudo vim /etc/unbound/unbound.conf
+```
+
+콘텐츠
+
+```bash
+server:
+  interface: 0.0.0.0
+  access-control: 192.168.70.0/24 allow
+  do-ip4: yes
+  do-udp: yes
+  do-tcp: yes
+  hide-identity: yes
+  hide-version: yes
+  qname-minimisation: yes
+```
+
+서비스 활성화(runit):
+
+```bash
+ln -s /etc/sv/unbound /var/service/
+sv start unbound
+```
+
+## 14. 🎉 체크리스트 최종
 
 - 노크 없이 보이지 않는 SSH
 - 일회용 노크
@@ -474,10 +509,12 @@ sudo fail2ban-client set sshd unbanip X.X.X.X
 - 기능적 NAT
 - 영구 방화벽
 - Proxmox는 터널을 통해서만 접근 가능
+- 최소 재귀 DNS(PDC가 진입할 때까지)
 
 ---
 
 🎯 그게 전부입니다!
+
 👉 https://t.me/z3r0l135
 👉 https://t.me/vcatafesta
 

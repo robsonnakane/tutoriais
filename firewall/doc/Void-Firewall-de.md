@@ -1,6 +1,6 @@
 #  🧩 VOID LINUX TUTORIAL – SICHERHEITSSCHEMA-IMPLEMENTIERUNG – LABOR-WORKSHOPS
 
-📌 Firewall mit öffentlicher IP, Void Linux (glibc), IPTables (Legacy), NAT, Port Knocking und Fail2ban
+📌 Firewall mit öffentlicher IP, Void Linux (glibc), IPTables (Legacy), NAT, Port Knocking, Fail2ban und rekursives DNS
 
 ---
 
@@ -442,7 +442,7 @@ sudo sv start fail2ban
 sudo sv status fail2ban
 ```
 
-12. ✅ FAIL2BAN TEST (ACHTUNG Du sperrst Dich bei Fremdzugriff aus)
+## 12. ✅ FAIL2BAN TEST (ACHTUNG Du sperrst Dich bei Fremdzugriff aus)
 
 Ausführen oder klopfen
 
@@ -464,7 +464,42 @@ Manuell entsperren:
 sudo fail2ban-client set sshd unbanip X.X.X.X
 ```
 
-13. 🎉 CHECKLISTE FINAL
+## 13. ✅ Die Firewall muss Namen für Maschinen im internen Netzwerk auflösen und wird dies mit Unterstützung des ungebundenen Pakets tun
+
+Diese Konfiguration ist nur gültig, bis SAMBA4 als interner PDC als DNS des Netzwerks hochgeladen wird. Anschließend wird sie verworfen!
+
+```bash
+sudo xbps-install -y unbound
+```
+
+Mindestkonfiguration:
+
+```bash
+sudo vim /etc/unbound/unbound.conf
+```
+
+Inhalt
+
+```bash
+server:
+  interface: 0.0.0.0
+  access-control: 192.168.70.0/24 allow
+  do-ip4: yes
+  do-udp: yes
+  do-tcp: yes
+  hide-identity: yes
+  hide-version: yes
+  qname-minimisation: yes
+```
+
+Dienst aktivieren (runit):
+
+```bash
+ln -s /etc/sv/unbound /var/service/
+sv start unbound
+```
+
+## 14. 🎉 CHECKLISTE FINALE
 
 - Unsichtbares SSH ohne Klopfen
 - Einweg-Knock
@@ -474,10 +509,12 @@ sudo fail2ban-client set sshd unbanip X.X.X.X
 - Funktionelles NAT
 - Permanente Firewall
 - Proxmox nur über Tunnel erreichbar
+- Minimales rekursives DNS (bis PDC eintritt)
 
 ---
 
 🎯 DAS IST ALLES, LEUTE!
+
 👉 https://t.me/z3r0l135
 👉 https://t.me/vcatafesta
 

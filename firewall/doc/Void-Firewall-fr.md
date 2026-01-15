@@ -1,6 +1,6 @@
 #  🧩 TUTORIEL VOID LINUX — MISE EN ŒUVRE DU SYSTÈME DE SÉCURITÉ – ATELIERS DE LABORATOIRE
 
-📌 Pare-feu avec IP Público, Void Linux (glibc), IPTables (legacy), NAT, Port Knocking et Fail2ban
+📌 Pare-feu avec IP Público, Void Linux (glibc), IPTables (legacy), NAT, Port Knocking, Fail2ban et DNS récursif
 
 ---
 
@@ -442,7 +442,7 @@ sudo sv start fail2ban
 sudo sv status fail2ban
 ```
 
-12. ✅ TEST FAIL2BAN (ATTENTION vous vous verrouillez lors d'un accès externe)
+## 12. ✅ FAIL2BAN TEST (ATTENTION vous vous verrouillez lors d'un accès externe)
 
 Exécuter ou frapper
 
@@ -464,7 +464,42 @@ Annuler le ban manuellement :
 sudo fail2ban-client set sshd unbanip X.X.X.X
 ```
 
-13. 🎉 LISTE DE CONTRÔLE FINALE
+## 13. ✅ Le pare-feu devra résoudre les noms des machines sur le réseau interne, et le fera avec le support du package non lié.
+
+Cette configuration ne sera valide que jusqu'à ce que SAMBA4 soit téléchargé en tant que PDC interne en tant que DNS du réseau, après quoi jetez-le !
+
+```bash
+sudo xbps-install -y unbound
+```
+
+Configuration minimale :
+
+```bash
+sudo vim /etc/unbound/unbound.conf
+```
+
+Contenu
+
+```bash
+server:
+  interface: 0.0.0.0
+  access-control: 192.168.70.0/24 allow
+  do-ip4: yes
+  do-udp: yes
+  do-tcp: yes
+  hide-identity: yes
+  hide-version: yes
+  qname-minimisation: yes
+```
+
+Activer le service (runit) :
+
+```bash
+ln -s /etc/sv/unbound /var/service/
+sv start unbound
+```
+
+## 14. 🎉 LISTE DE CONTRÔLE FINALE
 
 - SSH invisible sans frapper
 - Coup à usage unique
@@ -474,10 +509,12 @@ sudo fail2ban-client set sshd unbanip X.X.X.X
 - NAT fonctionnel
 - Pare-feu persistant
 - Proxmox uniquement accessible via tunnel
+- DNS récursif minimal (jusqu'à ce que PDC entre)
 
 ---
 
 🎯 C'EST TOUS LES GENS !
+
 👉 https://t.me/z3r0l135
 👉 https://t.me/vcatafesta
 
