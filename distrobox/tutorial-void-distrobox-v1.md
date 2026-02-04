@@ -22,7 +22,7 @@ Obs: este guia parte do pressuposto que o Void Linux já está instalado.
 ## Antes de tudo: repositório chililinux
 
 O pacote `distrobox` não existe nos repositórios oficiais do Void.
-Mas foi empacotado pelo Comunidade VoidLinuxBR, por isso, é necessário adicionar o repositório chililinux (um mirror oficial do Void no Brasil <https://xmirror.voidlinux.org/>).
+Mas foi empacotado pelo Comunidade VoidLinuxBR, por isso, é necessário adicionar o repositório chililinux (mirror oficial Void no Brasil - <https://xmirror.voidlinux.org/>).
 
 Execute **exatamente** os comandos abaixo:
 ```bash
